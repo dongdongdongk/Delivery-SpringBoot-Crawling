@@ -14,6 +14,7 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
+<c:import url="common/header.jsp"/>
 <div class="container py-5">
     <!-- For Demo Purpose-->
     <header class="text-center mb-5">
