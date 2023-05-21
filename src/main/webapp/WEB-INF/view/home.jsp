@@ -10,21 +10,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/home.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
 <c:import url="common/header.jsp"/>
+<c:import url="common/style.jsp"/>
 <div class="container py-5">
     <!-- For Demo Purpose-->
     <header class="text-center mb-5">
-        <h1 class="display-4 font-weight-bold">Bootstrap Cards</h1>
-        <p class="font-italic text-muted mb-0">An awesome Bootstrap 4 cards collection with variant content.</p>
-        <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">
-            <u>Bootstrapious</u></a>
+        <h1 class="display-4 font-weight-bold">배달 사이트</h1>
+        <p class="font-italic text-muted mb-0">무엇을 배달 해드릴까요?</p>
+        <p class="font-italic text-muted">-배달배달-<a href="https://bootstrapious.com" class="text-muted">
+            <u>배달은 옳다</u></a>
         </p>
     </header>
+    <c:import url="common/addres.jsp"/>
+    <section class="address_search">
+        <div id="search_box">
+            <div>
+                <input type="hidden" id="deleveryAddress1" placeholder="우편번호" value="${BMaddress.address1 }" name="address1" readonly>
+                <input type="text" value="${BMaddress.address2 }"
+                       id="deleveryAddress2" readonly placeholder="주소를 입력해 주세요" name="address2"><br>
+            </div>
 
+            <div class="search_btn">
+                <label for="search_btn">
+                    <i class="fas fa-search"></i>
+                </label>
+
+                <input type="button" name="search" id="search_btn">
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- First Row [Prosucts]-->
     <h2 class="font-weight-bold mb-2">From the Shop</h2>
@@ -216,11 +235,6 @@
     </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
+<c:import url="common/footer.jsp"/>
 </body>
 </html>

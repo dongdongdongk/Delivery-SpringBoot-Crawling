@@ -9,9 +9,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        /* CSS code */
+        .banner {
+            background-color: #ce9c1d;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <h1>test</h1>
-    <img src="img/head.jpg" alt="" class="img-fluid">
+    <div class="banner">
+        <h1>배달배달</h1>
+    </div>
+   <img src="img/head.jpg" alt="" class="img-fluid">
 </body>
 </html>
