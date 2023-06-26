@@ -24,7 +24,7 @@
 <%--            <u>배달은 옳다</u></a>--%>
 <%--        </p>--%>
     </header>
-    <c:import url="common/addres.jsp"/>
+    <c:import url="common/address.jsp"></c:import>
 
     <div class="row pb-5 mb-4">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">

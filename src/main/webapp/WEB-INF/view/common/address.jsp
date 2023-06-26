@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <input type="text" id="sample2_postcode" placeholder="우편번호">
 <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" id="sample2_address" placeholder="주소"><br>
@@ -96,4 +98,20 @@
         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
+    //주소를 세션과 쿠키에 저장하는 기능
+    console.log("data.zonecode = " + data.zonecode);
+    console.log("addr = " + addr);
+
+    $.ajax({
+        url: "/addressModify",
+        data: {address1 : data.zonecode , address2 : addr},
+        type: "post"
+    })
+        .done(function(){
+            $(".address1").text(addr);
+            address1 = data.zonecode;
+        })
+        .fail(function(){
+            alert("실패");
+        })
 </script>
