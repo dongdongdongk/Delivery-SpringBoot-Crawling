@@ -18,45 +18,21 @@
 <div class="container py-5">
     <!-- For Demo Purpose-->
     <header class="text-center mb-5">
-        <h1 class="display-4 font-weight-bold">배달 사이트</h1>
-        <p class="font-italic text-muted mb-0">무엇을 배달 해드릴까요?</p>
-        <p class="font-italic text-muted">-배달배달-<a href="https://bootstrapious.com" class="text-muted">
-            <u>배달은 옳다</u></a>
-        </p>
+<%--        <h1 class="display-4 font-weight-bold">배달 사이트</h1>--%>
+<%--        <p class="font-italic text-muted mb-0">무엇을 배달 해드릴까요?</p>--%>
+<%--        <p class="font-italic text-muted">-배달배달-<a href="https://bootstrapious.com" class="text-muted">--%>
+<%--            <u>배달은 옳다</u></a>--%>
+<%--        </p>--%>
     </header>
     <c:import url="common/addres.jsp"/>
-    <section class="address_search">
-        <div id="search_box">
-            <div>
-                <input type="hidden" id="deleveryAddress1" placeholder="우편번호" value="${BMaddress.address1 }" name="address1" readonly>
-                <input type="text" value="${BMaddress.address2 }"
-                       id="deleveryAddress2" readonly placeholder="주소를 입력해 주세요" name="address2"><br>
-            </div>
-
-            <div class="search_btn">
-                <label for="search_btn">
-                    <i class="fas fa-search"></i>
-                </label>
-
-                <input type="button" name="search" id="search_btn">
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- First Row [Prosucts]-->
-    <h2 class="font-weight-bold mb-2">From the Shop</h2>
-    <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt.</p>
 
     <div class="row pb-5 mb-4">
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/pizza.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">피자/양식</h5>
                     <ul class="list-inline small">
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -68,12 +44,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/chicken.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">치킨</h5>
                     <ul class="list-inline small">
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
@@ -85,12 +61,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/snack bar.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">분식</h5>
 
                     <ul class="list-inline small">
@@ -103,12 +79,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 ">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/salad.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">샐러드</h5>
 
                     <ul class="list-inline small">
@@ -121,12 +97,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/night.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">야식</h5>
 
                     <ul class="list-inline small">
@@ -140,12 +116,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/Japanese.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">일식</h5>
 
                     <ul class="list-inline small">
@@ -158,12 +134,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/fruit.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">과일</h5>
 
                     <ul class="list-inline small">
@@ -176,12 +152,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/dessert.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">디저트</h5>
 
                     <ul class="list-inline small">
@@ -194,12 +170,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/Korean.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">한식</h5>
 
                     <ul class="list-inline small">
@@ -215,12 +191,12 @@
 
 
 
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-3">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><img
+                <div class="card-body p-1"><img
                         src="img/Chinese.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3">
+                        class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">중식</h5>
                     <ul class="list-inline small">
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
