@@ -16,6 +16,7 @@
             color: white;
             padding: 10px;
             text-align: left;
+
         }
         .header-image-container {
             position: relative;
