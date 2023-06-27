@@ -65,13 +65,6 @@
                         src="img/pizza.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">피자/양식</h5>
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -82,13 +75,6 @@
                         src="img/chicken.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">치킨</h5>
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -99,14 +85,6 @@
                         src="img/snack bar.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">분식</h5>
-
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -118,13 +96,6 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">샐러드</h5>
 
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -135,14 +106,6 @@
                         src="img/night.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">야식</h5>
-
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
 
                 </div>
             </div>
@@ -155,13 +118,6 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">일식</h5>
 
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -173,13 +129,6 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">과일</h5>
 
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -191,13 +140,6 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">디저트</h5>
 
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -209,13 +151,6 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">한식</h5>
 
-<%--                    <ul class="list-inline small">--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
-<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
-<%--                    </ul>--%>
                 </div>
             </div>
         </div>
