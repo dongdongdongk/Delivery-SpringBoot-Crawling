@@ -11,6 +11,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/footer.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <c:import url="common/header.jsp"/>
@@ -24,8 +26,37 @@
 <%--            <u>배달은 옳다</u></a>--%>
 <%--        </p>--%>
     </header>
-    <c:import url="common/address.jsp"></c:import>
+    <div>
+        <c:import url="common/searchBox.jsp"></c:import>
+    </div>
+    <section class="address_search">
+        <div id="search_box" class="d-flex justify-content-center mb-5 mt-5">
+<%--            <div>--%>
+<%--                <input type="hidden" id="deleveryAddress1" placeholder="우편번호" value="${BMaddress.address1 }" name="address1" readonly>--%>
+<%--                <input type="text" value="${BMaddress.address2 }" onclick="modifyAddress()"--%>
+<%--                       id="deleveryAddress2" readonly placeholder="주소를 입력해 주세요" name="address2"><br>--%>
+<%--            </div>--%>
 
+            <div class="">
+                <input type="hidden" id="deleveryAddress1" placeholder="우편번호" value="${BMaddress.address1 }" name="address1" readonly>
+                <input type="text" value="${BMaddress.address2 }" onclick="modifyAddress()" id="deleveryAddress2" placeholder="주소를 입력해 주세요" class="ui-autocomplete-input" autocomplete="off" name="address2">
+                <button type="submit" value="" id="search_btn" class="search_btn">
+                    <i class="fa fa-search inputicon"></i>
+                </button>
+            </div>
+
+<%--            <div class="search_btn">--%>
+<%--                <label for="search_btn">--%>
+<%--                    <i class="fas fa-search"></i>--%>
+<%--                </label>--%>
+
+<%--                <input type="button" name="search" id="search_btn">--%>
+
+<%--            </div>--%>
+            <c:import url="common/address.jsp"></c:import>
+
+        </div>
+    </section>
     <div class="row pb-5 mb-4">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
@@ -34,13 +65,13 @@
                         src="img/pizza.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">피자/양식</h5>
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -51,13 +82,13 @@
                         src="img/chicken.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">치킨</h5>
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -69,13 +100,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">분식</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -87,13 +118,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">샐러드</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -105,13 +136,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">야식</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
 
                 </div>
             </div>
@@ -124,13 +155,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">일식</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -142,13 +173,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">과일</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -160,13 +191,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">디저트</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -178,13 +209,13 @@
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">한식</h5>
 
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -198,13 +229,13 @@
                         src="img/Chinese.jpg" alt=""
                         class="img-fluid d-block mx-auto mb-3 border-radius">
                     <h5 class="text-center">중식</h5>
-                    <ul class="list-inline small">
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                    </ul>
+<%--                    <ul class="list-inline small">--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>--%>
+<%--                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>
@@ -212,5 +243,19 @@
 
 </div>
 <c:import url="common/footer.jsp"/>
+<script>
+    $(".search_btn").click(function(){
+        let address1 = $("#deleveryAddress1").val();
+        if(!address1) {
+            swal("배달 받으실 주소를 입력해 주세요");
+            return false;
+        }
+
+        const index = $(this).index();
+
+        location.href = "/store/" + (100+index) + "/" +address1;
+    })
+
+</script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <style>
         /* CSS code */
         .banner {
-            background-color: #e7253f;
+            background-color: #ee2f5f;
             color: white;
             padding: 10px;
             text-align: left;
@@ -24,7 +24,7 @@
 
         .header-image {
             width: 100vw;
-            height: calc(50vh - 50px); /* Adjust the height value as needed */
+            height: calc(25vh - 50px); /* Adjust the height value as needed */
             object-fit: cover;
             object-position: center top;
         }
@@ -57,25 +57,7 @@
             <div class="header-text">
                 배달 받을곳을 입력해주세요
             </div>
-            <section class="address_search">
-                <div id="search_box">
-                    <div>
-                        <input type="hidden" id="deleveryAddress1" placeholder="우편번호" value="${BMaddress.address1 }" name="address1" readonly>
-                        <input type="text" value="${BMaddress.address2 }"
-                               id="deleveryAddress2" readonly placeholder="주소를 입력해 주세요" name="address2"><br>
-                    </div>
 
-                    <div class="search_btn">
-                        <label for="search_btn">
-                            <i class="fas fa-search"></i>
-                        </label>
-
-                        <input type="button" name="search" id="search_btn">
-
-                    </div>
-
-                </div>
-            </section>
         </div>
 
 </body>

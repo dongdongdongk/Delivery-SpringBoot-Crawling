@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<input type="text" id="sample2_postcode" placeholder="우편번호">
-<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample2_address" placeholder="주소"><br>
-<input type="text" id="sample2_detailAddress" placeholder="상세주소">
-<input type="text" id="sample2_extraAddress" placeholder="참고항목">
+<%--<input type="text" id="sample2_postcode" placeholder="우편번호">--%>
+<%--<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>--%>
+<%--<input type="text" id="sample2_address" placeholder="주소"><br>--%>
+<%--<input type="text" id="sample2_detailAddress" placeholder="상세주소">--%>
+<input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
 
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -21,7 +21,7 @@
         element_layer.style.display = 'none';
     }
 
-    function sample2_execDaumPostcode() {
+    function modifyAddress() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -61,10 +61,27 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample2_postcode').value = data.zonecode;
-                document.getElementById("sample2_address").value = addr;
+                document.getElementById('deleveryAddress1').value = data.zonecode;
+                document.getElementById("deleveryAddress2").value = addr;
+
+                console.log("data.zonecode = " + data.zonecode);
+                console.log("addr = " + addr);
+
+                $.ajax({
+                    url: "/addressModify",
+                    data: {address1 : data.zonecode , address2 : addr},
+                    type: "post"
+                })
+                    .done(function(){
+                        $(".address1").text(addr);
+                        address1 = data.zonecode;
+                    })
+                    .fail(function(){
+                        alert("실패");
+                    })
+
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample2_detailAddress").focus();
+                document.getElementById("deleveryAddress3").focus();
 
                 // iframe을 넣은 element를 안보이게 한다.
                 // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -99,19 +116,4 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     //주소를 세션과 쿠키에 저장하는 기능
-    console.log("data.zonecode = " + data.zonecode);
-    console.log("addr = " + addr);
-
-    $.ajax({
-        url: "/addressModify",
-        data: {address1 : data.zonecode , address2 : addr},
-        type: "post"
-    })
-        .done(function(){
-            $(".address1").text(addr);
-            address1 = data.zonecode;
-        })
-        .fail(function(){
-            alert("실패");
-        })
 </script>
