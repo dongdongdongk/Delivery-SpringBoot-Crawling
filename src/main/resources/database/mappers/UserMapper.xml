@@ -4,8 +4,9 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.delivery.user.UserDAO">
     <insert id="setJoin" parameterType="UserVO">
-
-
+        INSERT
+        INTO USER(ID,PASSWORD,PHONENUMBER,EMAIL,ROLE,NICKNAME,USERNAME,GENDER,JOINDATE,BIRTH)
+        VALUES(#{id},#{password},#{phoneNumber},#{email},'ROLE_MEMBER',#{nickName},#{userName},#{gender},CURRENT_DATE,#{birth})
     </insert>
 
 </mapper>

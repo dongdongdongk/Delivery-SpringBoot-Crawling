@@ -3,6 +3,8 @@ package com.delivery.user;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Setter
 @Getter
 public class UserVO {
@@ -15,5 +17,8 @@ public class UserVO {
     private String role;
     private String nickName;
     private String userName;
+    private Date joinDate;
+    private Date birth;
+    private String gender;
 
 }

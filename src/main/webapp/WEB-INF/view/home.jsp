@@ -15,14 +15,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<c:import url="common/header.jsp"/>
 <div class="header-image-container">
-    <img src="img/head.jpg" alt="" class="header-image">
+<%--    <img src="img/head.jpg" alt="" class="header-image">--%>
     <div class="header-text color-white">
         <h1>배달 받을곳을 입력해주세요</h1>
     </div>
 
 </div>
-<c:import url="common/header.jsp"/>
 <c:import url="common/style.jsp"/>
 <div class="container py-5">
     <!-- For Demo Purpose-->

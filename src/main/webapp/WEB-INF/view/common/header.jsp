@@ -21,6 +21,9 @@
             text-align: left;
 
         }
+        *{
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
         .header-image-container {
             position: relative;
             display: inline-block;
@@ -47,18 +50,30 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        *{
-            font-family: 'Nanum Gothic Coding', monospace;
+        .color-Black {
+         color: #ffffff;
+         border: #000000;
         }
-        .color-white {
-         color: white;
-         border: white;
+
+        .white-filter {
+            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(320deg) brightness(99%) contrast(103%);
         }
+        .headtext {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
     </style>
 </head>
 <body>
     <div class="banner">
-        <h1>배달배달</h1>
+        <img src="/img/logo.svg" alt="logo" height="130" width="130" class="white-filter">
+        <span class="headtext">배달배달
+
+            <button type="button" class="btn btn-outline-light ml-6">로그인</button>
+            <a href="/user/userJoin"><button type="button" class="btn btn-outline-light ">회원가입</button></a>
+
+        </span>
     </div>
 <%--        <div class="header-image-container">--%>
 <%--            <img src="img/head.jpg" alt="" class="header-image">--%>
