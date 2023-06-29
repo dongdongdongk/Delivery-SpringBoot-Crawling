@@ -95,3 +95,7 @@ body {
     background-position: left bottom;
 
 }
+
+.border-text {
+    font-weight: bolder;
+}

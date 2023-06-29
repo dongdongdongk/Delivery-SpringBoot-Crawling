@@ -8,6 +8,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         /* CSS code */
@@ -44,8 +47,12 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .address_search {
-
+        *{
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
+        .color-white {
+         color: white;
+         border: white;
         }
     </style>
 </head>
@@ -53,13 +60,13 @@
     <div class="banner">
         <h1>배달배달</h1>
     </div>
-        <div class="header-image-container">
-            <img src="img/head.jpg" alt="" class="header-image">
-            <div class="header-text">
-                배달 받을곳을 입력해주세요
-            </div>
+<%--        <div class="header-image-container">--%>
+<%--            <img src="img/head.jpg" alt="" class="header-image">--%>
+<%--            <div class="header-text color-white">--%>
+<%--               <h1>배달 받을곳을 입력해주세요</h1>--%>
+<%--            </div>--%>
 
-        </div>
+<%--        </div>--%>
 
 </body>
 </html>
