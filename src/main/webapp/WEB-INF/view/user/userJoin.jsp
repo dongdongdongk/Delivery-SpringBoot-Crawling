@@ -54,6 +54,11 @@
         color: #ee2f5f!important; ;
     }
 
+    .text-alert {
+        color: red;
+        font-weight: bold;
+    }
+
 </style>
 
 
@@ -71,18 +76,9 @@
             <form id="userJoin" action="userJoin" method="post">
                 <div class="row">
 
-                    <!-- 이름 -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="userName" type="text" name="userName" placeholder="이름" class="form-control bg-white border-left-0 border-md">
-                    </div>
 
                     <!-- 아이디 -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
@@ -90,8 +86,19 @@
                         </div>
                         <input id="id" type="text" name="id" placeholder="아이디" class="form-control bg-white border-left-0 border-md">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.id}</div>
+                    <!-- 이름 -->
+                    <div class="input-group col-lg-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="userName" type="text" name="userName" placeholder="이름" class="form-control bg-white border-left-0 border-md">
+                    </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.userName}</div>
                     <!--닉네임-->
-                    <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
@@ -99,8 +106,9 @@
                         </div>
                         <input id="nickname" type="text" name="nickname" placeholder="닉네임" class="form-control bg-white border-left-0 border-md">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.nickName}</div>
                   <!--birth-->
-                    <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-calendar text-muted"></i>
@@ -108,9 +116,10 @@
                         </div>
                         <input id="birth" type="date" name="birth" data-placeholder="생년월일" class="form-control bg-white border-left-0 border-md">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.birth}</div>
 
                     <!-- Email Address -->
-                    <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-envelope text-muted"></i>
@@ -118,26 +127,22 @@
                         </div>
                         <input id="email" type="email" name="email" placeholder="이메일" class="form-control bg-white border-left-0 border-md">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.email}</div>
 
                     <!-- Phone Number -->
-                    <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-phone-square text-muted"></i>
                             </span>
                         </div>
-<%--                        <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">--%>
-<%--                            <option value="">+12</option>--%>
-<%--                            <option value="">+10</option>--%>
-<%--                            <option value="">+15</option>--%>
-<%--                            <option value="">+18</option>--%>
-<%--                        </select>--%>
                         <input id="phoneNumber" type="tel" name="phoneNumber" placeholder="휴대폰 번호" class="form-control bg-white border-md border-left-0 pl-3">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.phoneNumber}</div>
 
 
 
-                    <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-male" aria-hidden="true"></i>
@@ -150,19 +155,16 @@
                             <option value="여자">여자</option>
                         </select>
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.gender}</div>
 
                     <!-- Password -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-lock text-muted"></i>
                             </span>
                         </div>
                         <input id="password" type="password" name="password" placeholder="비밃번호" class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                    <!-- Password Confirmation -->
-                    <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-lock text-muted"></i>
@@ -170,6 +172,11 @@
                         </div>
                         <input id="passwordCheck" type="password" name="passwordCheck" placeholder="비밀번호 확인" class="form-control bg-white border-left-0 border-md">
                     </div>
+                    <div class="col-lg-12 text-alert mb-4">${errorMsg.password}</div>
+
+                    <!-- Password Confirmation -->
+<%--                    <div class="input-group col-lg-6 mb-4">--%>
+<%--                    </div>--%>
 
                     <div class="form-group col-lg-12 mx-auto mb-0">
                         <button type="submit" class="btn btn-primary btn-block py-2">
