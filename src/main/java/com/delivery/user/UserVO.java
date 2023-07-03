@@ -27,14 +27,13 @@ public class UserVO {
     private String email;
     private String emailCheck;
     private String role;
-    @NotBlank
     @Pattern(regexp = "^[가-힣|a-z|A-Z|0-9|]+$", message = "닉네임은 한글, 영어, 숫자만 4 ~10자리로 입력 가능합니다")
     private String nickName;
     @NotBlank
     private String userName;
     private Date joinDate;
-    @DateTimeFormat
-    private Date birth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private java.util.Date birth;
     @NotBlank(message = "성별을 선택 해주세요")
     private String gender;
 

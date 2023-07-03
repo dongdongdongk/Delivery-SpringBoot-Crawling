@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -58,4 +55,18 @@ public class UserController {
         mv.setViewName("redirect:../");
         return mv;
     }
+
+    @ResponseBody
+    @GetMapping("/overlapCheck")
+    public int overlapCheck(String value, String valueType) {
+//		value = 중복체크할 값
+//		valeuType = username, nickname
+        System.out.println(value);
+        System.out.println(valueType);
+        int count = userService.overlapCheck(value, valueType);
+
+        System.out.println(count);
+        return count;
+    }
+
 }

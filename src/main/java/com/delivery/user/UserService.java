@@ -14,4 +14,8 @@ public class UserService {
         return result;
     }
 
+    public int overlapCheck(String value, String valueType) {
+        return userDAO.overlapCheck(value, valueType);
+    }
+
 }

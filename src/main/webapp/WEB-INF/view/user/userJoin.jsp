@@ -86,7 +86,7 @@
                         </div>
                         <input id="id" type="text" name="id" placeholder="아이디" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.id}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.id}</div>
                     <!-- 이름 -->
                     <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
@@ -96,7 +96,7 @@
                         </div>
                         <input id="userName" type="text" name="userName" placeholder="이름" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.userName}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.userName}</div>
                     <!--닉네임-->
                     <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
@@ -106,7 +106,7 @@
                         </div>
                         <input id="nickname" type="text" name="nickname" placeholder="닉네임" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.nickName}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.nickName}</div>
                   <!--birth-->
                     <div class="input-group col-lg-12">
                         <div class="input-group-prepend">
@@ -116,7 +116,7 @@
                         </div>
                         <input id="birth" type="date" name="birth" data-placeholder="생년월일" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.birth}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.birth}</div>
 
                     <!-- Email Address -->
                     <div class="input-group col-lg-12">
@@ -127,7 +127,7 @@
                         </div>
                         <input id="email" type="email" name="email" placeholder="이메일" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.email}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.email}</div>
 
                     <!-- Phone Number -->
                     <div class="input-group col-lg-12">
@@ -138,7 +138,7 @@
                         </div>
                         <input id="phoneNumber" type="tel" name="phoneNumber" placeholder="휴대폰 번호" class="form-control bg-white border-md border-left-0 pl-3">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.phoneNumber}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.phoneNumber}</div>
 
 
 
@@ -155,7 +155,7 @@
                             <option value="여자">여자</option>
                         </select>
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.gender}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.gender}</div>
 
                     <!-- Password -->
                     <div class="input-group col-lg-12">
@@ -172,7 +172,7 @@
                         </div>
                         <input id="passwordCheck" type="password" name="passwordCheck" placeholder="비밀번호 확인" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4">${errorMsg.password}</div>
+                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.password}</div>
 
                     <!-- Password Confirmation -->
 <%--                    <div class="input-group col-lg-6 mb-4">--%>
