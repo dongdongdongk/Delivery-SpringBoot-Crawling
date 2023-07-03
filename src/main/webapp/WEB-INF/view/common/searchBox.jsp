@@ -179,7 +179,7 @@
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('제로페이');"> <img src="https://cdn-icons-png.flaticon.com/512/6296/6296508.png" width="50" class="color-red">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('제로페이 음식점');"> <img src="https://cdn-icons-png.flaticon.com/512/6296/6296508.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#제로페이</span> </div>
                         </div>
                     </div>
