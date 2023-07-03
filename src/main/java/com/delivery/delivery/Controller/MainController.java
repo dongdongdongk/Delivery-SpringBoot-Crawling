@@ -48,4 +48,9 @@ public class MainController {
         session.setMaxInactiveInterval(3600 * 3); // 3시간
         session.setAttribute("BMaddress", addMap);
     }
+    @GetMapping("map")
+    public String map() {
+        System.out.println("map");
+        return"map";
+    }
 }

@@ -24,18 +24,13 @@
 
 </div>
 <c:import url="common/style.jsp"/>
-<div class="container py-5">
-    <!-- For Demo Purpose-->
-    <header class="text-center mb-5">
-<%--        <h1 class="display-4 font-weight-bold">배달 사이트</h1>--%>
-<%--        <p class="font-italic text-muted mb-0">무엇을 배달 해드릴까요?</p>--%>
-<%--        <p class="font-italic text-muted">-배달배달-<a href="https://bootstrapious.com" class="text-muted">--%>
-<%--            <u>배달은 옳다</u></a>--%>
-<%--        </p>--%>
-    </header>
+<div class="container py-3">
+
     <div>
         <c:import url="common/searchBox.jsp"></c:import>
     </div>
+    <c:import url="common/searchMap.jsp"></c:import>
+
     <section class="address_search">
         <div id="search_box" class="d-flex justify-content-center mb-5 mt-5">
 <%--            <div>--%>
@@ -185,6 +180,7 @@
 
 </div>
 <c:import url="common/footer.jsp"/>
+
 <script>
     $(".search_btn").click(function(){
         let address1 = $("#deleveryAddress1").val();
@@ -199,5 +195,6 @@
     })
 
 </script>
+
 </body>
 </html>

@@ -114,12 +114,18 @@
             <div class="card p-4 mt-3 bg-light">
                 <h3 class="heading mt-5 text-center">원하시는 메뉴를 선택해 주세요!!!</h3>
                 <div class="d-flex justify-content-center px-5">
-                    <div class="search"> <input type="text" class="search-input" placeholder="먹고싶은 메뉴,가게 검색" name=""> <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                    <div class="search">
+                        <form onsubmit="searchPlaces(); return false;">
+                            <input type="hidden" id="address" value="">
+                            <input type="text" class="search-input" placeholder="먹고싶은 메뉴,가게 검색" name="" id="keyword" size="15" value="">
+                            <a href="#" onclick="searchPlaces();" class="search-icon"> <i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
                 </div>
                 <div class="row mt-4 g-1 px-4 mb-5">
                     <div class="col-sm-2">
                         <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/4200/4200159.png" width="50" class="color-red" >
-                            <div class="text-center mg-text"> <span class="mg-text">#점심식사</span> </div>
+                            <div class="text-center mg-text"> <span class="mg-text" onclick="updateKeyword('점심식사');">#점심식사</span> </div>
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -181,7 +187,21 @@
             </div>
         </div>
     </div>
-</div>
+<div class="map_wrap">
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
+    <div id="menu_wrap" class="bg_white">
+        <hr>
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
+    </div>
+</div>
+</div>
+<script>
+    function updateKeyword(keyword) {
+        document.getElementById("keyword").value = keyword;
+        searchPlaces();
+    }
+</script>
 </body>
 </html>
