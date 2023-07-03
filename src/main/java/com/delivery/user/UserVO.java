@@ -27,6 +27,7 @@ public class UserVO {
     private String email;
     private String emailCheck;
     private String role;
+    @NotBlank
     @Pattern(regexp = "^[가-힣|a-z|A-Z|0-9|]+$", message = "닉네임은 한글, 영어, 숫자만 4 ~10자리로 입력 가능합니다")
     private String nickName;
     @NotBlank

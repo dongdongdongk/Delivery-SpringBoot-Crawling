@@ -62,13 +62,25 @@
             font-weight: bold;
             font-size: xx-large;
         }
+        a {
+            color: #ffffff!important;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        a:hover {
+            color: #ffffff!important;
+            text-decoration: none!important;
+        }
 
     </style>
 </head>
 <body>
     <div class="banner">
-        <img src="/img/logo.svg" alt="logo" height="130" width="130" class="white-filter">
-        <span class="headtext">배달배달
+        <a href="/">
+            <img src="/img/logo.svg" alt="logo" height="130" width="130" class="white-filter">
+        </a>
+        <span class="headtext">
+            <a href="/">배달배달</a>
 
             <button type="button" class="btn btn-outline-light ml-6">로그인</button>
             <a href="/user/userJoin"><button type="button" class="btn btn-outline-light ">회원가입</button></a>

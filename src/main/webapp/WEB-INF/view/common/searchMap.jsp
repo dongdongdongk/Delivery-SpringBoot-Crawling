@@ -83,7 +83,7 @@
         var keyword =  address + " " + keywordinput;
         console.log(keyword)
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
-            alert('키워드를 입력해주세요!');
+            // alert('키워드를 입력해주세요!');
             return false;
         }
 
@@ -298,8 +298,10 @@
                         // 입력 필드의 값으로 주소 설정
                         // var inputElement = document.getElementById('keyword');
                         var inputAddress = document.getElementById('address');
+                        let myLocation = document.getElementById('myLocation');
+                        myLocation.textContent = '현재 내 위치 : ' + address;
                         inputAddress.value = address;
-                        // inputElement.value = address;
+                        // inputElement.value = keyword;
 
                         searchPlaces();
                     }
