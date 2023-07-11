@@ -302,6 +302,7 @@
                         myLocation.textContent = '현재 내 위치 : ' + address;
                         inputAddress.value = address;
                         // inputElement.value = keyword;
+                        
 
                         searchPlaces();
                     }
