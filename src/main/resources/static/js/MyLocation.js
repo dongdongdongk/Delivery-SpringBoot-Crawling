@@ -13,18 +13,7 @@ function getLocation() {
             var callback = function(result, status) {
                 if (status === kakao.maps.services.Status.OK) {
                     var address = result[0].address_name;
-                    console.log(address)
-                    $.ajax({
-                        type: "GET",
-                        url: "/Store/list",
-                        data: { address: address },
-                        success: function(response) {
-                            console.log(response);
-                        },
-                        error: function(error) {
-                            console.error("Error sending address:", error);
-                        }
-                    });
+                    console.log(address);
                 }
             };
             geocoder.coord2RegionCode(lon, lat, callback);

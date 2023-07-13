@@ -15,6 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<style>
+    .card-body h5 {
+        color: black; /* Set the desired text color */
+    }
+</style>
 <c:import url="common/header.jsp"/>
 <div class="header-image-container">
 <%--    <img src="img/head.jpg" alt="" class="header-image">--%>
@@ -61,24 +66,25 @@
     </section>
     <div class="row pb-5 mb-4">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-1"><img
-                        src="img/pizza.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3 border-radius">
-                    <h5 class="text-center border-text">피자/양식</h5>
+            <a onclick="redirectToPizza('피자')">
+                <div class="card rounded shadow-sm border-0">
+                    <div class="card-body p-1">
+                        <img src="img/pizza.jpg" alt="" class="img-fluid d-block mx-auto mb-3 border-radius">
+                        <h5 class="text-center border-text">피자</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-1"><img
-                        src="img/chicken.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3 border-radius">
-                    <h5 class="text-center border-text">치킨</h5>
+            <a onclick="redirectToChicken()">
+                <div class="card rounded shadow-sm border-0">
+                    <div class="card-body p-1"><img
+                            src="img/chicken.jpg" alt=""
+                            class="img-fluid d-block mx-auto mb-3 border-radius">
+                        <h5 class="text-center border-text">치킨</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
@@ -182,17 +188,12 @@
 <c:import url="common/footer.jsp"/>
 
 <script>
-    $(".search_btn").click(function(){
-        let address1 = $("#deleveryAddress1").val();
-        if(!address1) {
-            swal("배달 받으실 주소를 입력해 주세요");
-            return false;
-        }
-
-        const index = $(this).index();
-
-        location.href = "/store/" + (100+index) + "/" +address1;
-    })
+    function redirectToPizza(storeURL) {
+        window.location.href = '/store/list?' + "https://www.mangoplate.com/search/" + "강서구 화곡동" + "피자";
+    }
+    function redirectToChicken(storeURL) {
+        window.location.href = '/store/list?' + "https://www.mangoplate.com/search/" + "강서구 화곡동" + "치킨";
+    }
 
 </script>
 

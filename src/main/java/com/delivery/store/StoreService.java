@@ -31,7 +31,8 @@ public class StoreService {
     private static String storeURL = "https://www.mangoplate.com/search/%EA%B0%95%EC%84%9C%EA%B5%AC%20%ED%99%94%EA%B3%A1%EB%8F%99%20%ED%94%BC%EC%9E%90%20";
     private static String storeDetailURL = "https://www.mangoplate.com/restaurants/QPr6GVIc4Y";
 
-    public List<StoreVO> getStoreList() throws IOException {
+    //스토어 리스트 정보 가져오기
+    public List<StoreVO> getStoreList(String storeURL) throws IOException {
         List<StoreVO> storeList = new ArrayList<>();
         Document document = Jsoup.connect(storeURL).get();
         Elements contents = document.select("figure.restaurant-item");
@@ -41,27 +42,88 @@ public class StoreService {
                     .title(content.select("div.info a h2.title").text()) //제목
                     .image(content.select("a div img").attr("abs:data-original")) // 이미지
                     .subdivision(content.select("p.etc").text()) //위치
+                    .reviewCount(content.select("span.review_count").text())//리뷰 숫자
+                    .view(content.select("span.view_count").text()) //조회수
+                    .url(content.select("a.only-desktop_not").attr("href"))
                     .build();
             storeList.add(storeVO);
         }
 
         return storeList;
     }
-    public List<StoreVO> getStoreDetail() throws IOException {
+    //가게 이름, 업데이트 날짜 등등 가져오기
+    //여러개가 아니여서 for 뺌
+    public StoreVO getStoreDetail(String storeURL) throws IOException {
+        Document document = Jsoup.connect(storeURL).get();
+        Elements contents = document.select("section.restaurant-detail");
+        StoreVO storeVO = StoreVO.builder()
+                .title(contents.select("h1.restaurant_name").text()) //제목
+                .lastUpdate(contents.select("p.update_date").text()) //마지막 업데이트
+                .build();
+
+
+
+//        log.error("::::{}::::::",contents);
+
+
+        return storeVO;
+    }
+
+    //table 파싱을 위한 기능
+    public StoreTableVO getStoreTable(String storeURL) throws Exception {
+        StoreTableVO storeTableVO = new StoreTableVO();
+        Document document = Jsoup.connect(storeURL).get();
+        Element table = document.select("table.info.no_menu").first();
+        Elements rows = table.select("tbody tr");
+        for (Element row : rows) {
+            Element header = row.selectFirst("th");
+            Element data = row.selectFirst("td");
+            String headerText = header.text();
+            String dataText = data.text();
+            switch (headerText) {
+                case "주소":
+                    storeTableVO.setAddress(dataText);
+                    break;
+                case "전화번호":
+                    storeTableVO.setPhoneNumber(dataText);
+                    break;
+                case "음식 종류":
+                    storeTableVO.setFoodType(dataText);
+                    break;
+                case "가격대":
+                    storeTableVO.setPriceRange(dataText);
+                    break;
+                case "주차":
+                    storeTableVO.setParking(dataText);
+                    break;
+                case "영업시간":
+                    storeTableVO.setTime(dataText);
+                    break;
+                case "마지막주문":
+                    storeTableVO.setLastOrder(dataText);
+                    break;
+                case "웹 사이트":
+                    storeTableVO.setWebsite(dataText);
+                    break;
+                default:
+                    // Handle unrecognized header value, if needed
+                    break;
+            }
+            System.out.println(headerText + ": " + dataText);
+        }
+        return storeTableVO;
+    }
+    //이미지 리스트 가져오기
+    public List<StoreVO>getStoreDetailImage(String storeURL) throws Exception{
         List<StoreVO> storeList = new ArrayList<>();
-        Document document = Jsoup.connect(storeDetailURL).get();
-        Elements contents = document.select("figure.restaurant-item");
-        log.error("::::{}::::::",document);
-        for (Element content : contents) {
+        Document document = Jsoup.connect(storeURL).get();
+        Elements images = document.select("figure.restaurant-photos-item");
+        for(Element image : images ) {
             StoreVO storeVO = StoreVO.builder()
-                    .title(content.select("h1.restaurant_name").text()) //제목
-                    .image(content.select("figure.restaurant-photos-item img").attr("abs:data-original")) // 이미지
-                    .address(content.select("table").text())
-//                    .phoneNumber(content.select(""))
+                    .image(image.select("img.center-croping").attr("abs:src")) // 이미지
                     .build();
             storeList.add(storeVO);
         }
-
         return storeList;
     }
 

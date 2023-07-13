@@ -20,18 +20,22 @@ public class StoreController {
     @GetMapping("/list")
 //    @ResponseBody
 //    @RequestParam("address") String address
-    public ModelAndView getStoreList() throws Exception {
+    public ModelAndView getStoreList(@RequestParam("storeURL") String storeURL) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<StoreVO>storeVOList = storeService.getStoreList();
-        List<StoreVO>storeVOList1 = storeService.getStoreDetail();
+        List<StoreVO>storeVOList = storeService.getStoreList(storeURL);
         mv.addObject("storeList", storeVOList);
         mv.setViewName("store/list");
         return mv;
     }
-    public ModelAndView getStoreDetail() throws Exception {
+    @GetMapping("/detail")
+    public ModelAndView getStoreDetail(@RequestParam("storeURL") String storeURL) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<StoreVO>storeVOList = storeService.getStoreDetail();
-        mv.addObject("storeDetail",storeVOList);
+        StoreVO storeDetail = storeService.getStoreDetail(storeURL);
+        List<StoreVO>storeImages = storeService.getStoreDetailImage(storeURL);
+        StoreTableVO storeTableVO = storeService.getStoreTable(storeURL);
+        mv.addObject("storeImages",storeImages);
+        mv.addObject("storeDetail",storeDetail);
+        mv.addObject("storeTable",storeTableVO);
         mv.setViewName("store/detail");
         return mv;
     }

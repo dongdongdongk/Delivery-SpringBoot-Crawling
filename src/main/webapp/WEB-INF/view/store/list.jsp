@@ -33,6 +33,16 @@
         background-color: #f1537b!important;
         border-color: #f1537b!important;
     }
+    .dot {
+        height: 7px;
+        width: 7px;
+        margin-left: 6px;
+        margin-right: 6px;
+        margin-top: 3px;
+        background-color: #f1537b!important;
+        border-radius: 50%;
+        display: inline-block;
+    }
 
 </style>
 <c:import url="../common/header.jsp"/>
@@ -56,13 +66,12 @@
                         <div class="d-flex flex-row">
                             <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
                         </div>
-                        <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
-                        <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
+                        <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>리뷰수:${storeList.reviewCount}</span><br><span class="dot"></span><span>조회수:${storeList.view}<br></span></div>
                         <p class="text-justify text-truncate para mb-0">${storeList.subdivision}<br><br></p>
                     </div>
                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
 
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="redirectToDetail('${storeList.url}')" >Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
                     </div>
                 </div>
             </div>
@@ -71,6 +80,11 @@
 </c:forEach>
 </section>
 
+<script>
+    function redirectToDetail(storeURL) {
+        window.location.href = '/store/detail?storeURL=' + "https://www.mangoplate.com" + encodeURIComponent(storeURL);
+    }
+</script>
 <%--<h1>List</h1>--%>
 
 <%--<c:forEach var="storeList" items="${storeList}">--%>
