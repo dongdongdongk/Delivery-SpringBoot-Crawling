@@ -289,8 +289,10 @@
                 var geocoder = new kakao.maps.services.Geocoder();
 
                 var callback = function(result, status) {
+                    //console.log 를 찍어서 주소 정보를 불러옴 (ex:서울특별시 강서구 화곡동)
                     console.log(result)
                     if (status === kakao.maps.services.Status.OK) {
+                        // 필요한 정보가 강서구 화곡동 이기 때문에 gu 와 dong 을 구해서 합쳐줌
                         var address = result[0].address_name;
                         let gu = result[0].region_2depth_name;
                         let dong = result[0].region_3depth_name;
