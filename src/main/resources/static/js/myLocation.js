@@ -1,3 +1,4 @@
+let address;
 function getLocation() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
@@ -12,7 +13,7 @@ function getLocation() {
 
             var callback = function(result, status) {
                 if (status === kakao.maps.services.Status.OK) {
-                    var address = result[0].address_name;
+                    address = result[0].region_2depth_name + "" + road_name;
                     console.log(address);
                 }
             };
@@ -24,3 +25,4 @@ function getLocation() {
     }
     return true
 }
+getLocation();

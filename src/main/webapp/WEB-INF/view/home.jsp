@@ -66,7 +66,7 @@
     </section>
     <div class="row pb-5 mb-4">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <a onclick="redirectToPizza('피자')">
+            <a onclick="redirectToPizza()">
                 <div class="card rounded shadow-sm border-0">
                     <div class="card-body p-1">
                         <img src="img/pizza.jpg" alt="" class="img-fluid d-block mx-auto mb-3 border-radius">
@@ -87,14 +87,15 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-1"><img
-                        src="img/snack bar.jpg" alt=""
-                        class="img-fluid d-block mx-auto mb-3 border-radius">
-                    <h5 class="text-center border-text">분식</h5>
+            <a onclick="redirectToBunsik()">
+                <div class="card rounded shadow-sm border-0">
+                    <div class="card-body p-1"><img
+                            src="img/snack bar.jpg" alt=""
+                            class="img-fluid d-block mx-auto mb-3 border-radius">
+                        <h5 class="text-center border-text">분식</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 ">
             <!-- Card-->
@@ -186,16 +187,18 @@
 
 </div>
 <c:import url="common/footer.jsp"/>
-
 <script>
-    function redirectToPizza(storeURL) {
-        window.location.href = '/store/list?' + "https://www.mangoplate.com/search/" + "강서구 화곡동" + "피자";
+
+    function redirectToPizza() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "피자";
     }
-    function redirectToChicken(storeURL) {
-        window.location.href = '/store/list?' + "https://www.mangoplate.com/search/" + "강서구 화곡동" + "치킨";
+    function redirectToChicken() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "치킨";
+    }
+    function redirectToBunsik() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "분식";
     }
 
 </script>
-
 </body>
 </html>

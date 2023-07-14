@@ -273,6 +273,8 @@
         }
     }
 
+
+    let addressList;
     //내 위치 얻기
     function currentLocation() {
         // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
@@ -287,9 +289,12 @@
                 var geocoder = new kakao.maps.services.Geocoder();
 
                 var callback = function(result, status) {
+                    console.log(result)
                     if (status === kakao.maps.services.Status.OK) {
                         var address = result[0].address_name;
-
+                        let gu = result[0].region_2depth_name;
+                        let dong = result[0].region_3depth_name;
+                        addressList = gu + " " + dong + " ";
                         // 주소를 기반으로 지도 중심 위치 업데이트
                         var center = new kakao.maps.LatLng(lat, lon);
                         map.setCenter(center);
@@ -301,6 +306,7 @@
                         let myLocation = document.getElementById('myLocation');
                         myLocation.textContent = '현재 내 위치 : ' + address;
                         inputAddress.value = address;
+
                         // inputElement.value = keyword;
                         
 
@@ -322,7 +328,6 @@
         }
         return true
     }
-
 
     currentLocation();
 </script>
