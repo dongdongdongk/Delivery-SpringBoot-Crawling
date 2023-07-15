@@ -10,8 +10,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/storeDetail.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<style>
+    .btn-primary {
+        color: #fff;
+        background-color: #f1537b!important;
+        border-color: #f1537b!important;
+    }
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #a20936!important;
+        border-color: #a20936!important;
+    }
+</style>
 <c:import url="../common/header.jsp"/>
 <div class="header-image-container">
     <%--    <img src="img/head.jpg" alt="" class="header-image">--%>
@@ -162,42 +175,69 @@
 <%--                    </c:forEach>--%>
 <%--                </div>--%>
 <%--            </div>--%>
-            <div class="card mt-2"><h6>리뷰</h6>
+            <div class="card mt-2">
+                <h6>리뷰</h6>
                 <hr>
                 <div class="comment-section">
-                    <c:forEach var="storeCommentList" items="${storeCommentList}">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex flex-row align-items-center"><img  src="/img/userImg.png"
-                                                                                  class="rounded-circle profile-image oriImg">
-                                <div class="d-flex flex-column ml-1 comment-profile">
-                                    <c:choose>
-                                        <c:when test="${storeCommentList.rating eq '맛있다'}">
-                                            <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                            </div>
-                                        </c:when>
-                                        <c:when test="${storeCommentList.rating eq '괜찮다'}">
-                                            <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            </div>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <div class="comment-ratings"><i class="fa fa-star"></i>
-                                            </div>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <span class="username">${storeCommentList.userName}</span></div>
+                    <div id="reviewsContainer">
+                        <c:forEach var="storeCommentList" items="${storeCommentList}" varStatus="status">
+                            <div class="review" style="display: ${status.index < 3 ? 'block' : 'none'}">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="/img/userImg.png" class="rounded-circle profile-image oriImg">
+                                        <div class="d-flex flex-column ml-1 comment-profile">
+                                            <c:choose>
+                                                <c:when test="${storeCommentList.rating eq '맛있다'}">
+                                                    <div class="comment-ratings">평점 : <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${storeCommentList.rating eq '괜찮다'}">
+                                                    <div class="comment-ratings">평점 : <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class="comment-ratings">평점 : <i class="fa fa-star"></i>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <span class="username">${storeCommentList.userName}</span>
+                                        </div>
+                                    </div>
+                                    <div class="date">
+                                        <span class="text-muted">${storeCommentList.date}</span>
+                                    </div>
+                                </div>
+                                <div class="contents">${storeCommentList.contents}</div>
+                                <hr>
                             </div>
-                            <div class="date"><span class="text-muted">${storeCommentList.date}</span></div>
-                        </div>
-                            <div class="contents">${storeCommentList.contents}</div>
-                        <hr>
-                    </c:forEach>
+                        </c:forEach>
+                    </div>
+                    <button id="loadMoreBtn" class="btn btn-primary mt-2">리뷰 더보기</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script>
+    $(document).ready(function () {
+        let visibleReviews = 3;
+        let totalReviews = $(".review").length;
+
+        if (visibleReviews >= totalReviews) {
+            $("#loadMoreBtn").hide();
+        }
+
+        $("#loadMoreBtn").click(function () {
+            $(".review:hidden").slice(0, 3).slideDown();
+
+            visibleReviews += 3;
+            if (visibleReviews >= totalReviews) {
+                $("#loadMoreBtn").hide();
+            }
+        });
+    });
+</script>
 <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
 <script> $('#lightSlider').lightSlider({gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9});
 </script>

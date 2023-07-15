@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
@@ -146,8 +147,12 @@ public class StoreService {
 //        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        //창 숨기는 옵션 추가
-//        options.addArguments("headless");
+        //창 숨기는 옵션 추가 (댓글이 뜨지 않는 문제가 있었는데 이걸로 해결 댓글에 이미지가 포함되서 인듯)
+        options.addArguments("--disable-popup-blocking");       //팝업안띄움
+        options.addArguments("headless");                       //브라우저 안띄움
+        options.addArguments("--disable-gpu");			//gpu 비활성화
+        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
+
         WebDriver driver = new ChromeDriver(options);
 //        WebDriver driver = new ChromeDriver();
 
@@ -159,6 +164,8 @@ public class StoreService {
 
         //URL 접속(접속할 곳 적어주기)
         driver.get(storeURL);
+        //
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //창이 뜨고 바로 꺼지지 않게 5초정도 대기
         List<StoreCommentVO> commentList = new ArrayList<>();
         //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
@@ -171,8 +178,7 @@ public class StoreService {
         //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
         for(int i=1;i<=7;i++) {
             actions.sendKeys(Keys.END).perform();
-            actions.sendKeys(Keys.END).perform();
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
         }
 
