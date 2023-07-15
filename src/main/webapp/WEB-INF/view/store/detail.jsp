@@ -186,6 +186,7 @@
                                     <div class="d-flex flex-row align-items-center">
                                         <img src="/img/userImg.png" class="rounded-circle profile-image oriImg">
                                         <div class="d-flex flex-column ml-1 comment-profile">
+                                            <span class="username">${storeCommentList.userName}</span>
                                             <c:choose>
                                                 <c:when test="${storeCommentList.rating eq '맛있다'}">
                                                     <div class="comment-ratings">평점 : <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -201,7 +202,6 @@
                                                     </div>
                                                 </c:otherwise>
                                             </c:choose>
-                                            <span class="username">${storeCommentList.userName}</span>
                                         </div>
                                     </div>
                                     <div class="date">

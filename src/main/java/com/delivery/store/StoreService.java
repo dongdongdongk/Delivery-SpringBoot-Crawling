@@ -48,6 +48,7 @@ public class StoreService {
         }
         return storeList;
     }
+
     //가게 이름, 업데이트 날짜 등등 가져오기
     //여러개가 아니여서 for 뺌
     public StoreVO getStoreDetail(String storeURL) throws IOException {
@@ -57,7 +58,6 @@ public class StoreService {
                 .title(contents.select("h1.restaurant_name").text()) //제목
                 .lastUpdate(contents.select("p.update_date").text()) //마지막 업데이트
                 .build();
-
 
 
 //        log.error("::::{}::::::",contents);
@@ -71,51 +71,59 @@ public class StoreService {
         StoreTableVO storeTableVO = new StoreTableVO();
         Document document = Jsoup.connect(storeURL).get();
         Element table = document.select("table.info.no_menu").first();
-        Elements rows = table.select("tbody tr");
-        for (Element row : rows) {
-            Element header = row.selectFirst("th");
-            Element data = row.selectFirst("td");
-            String headerText = header.text();
-            String dataText = data.text();
-            switch (headerText) {
-                case "주소":
-                    storeTableVO.setAddress(dataText);
-                    break;
-                case "전화번호":
-                    storeTableVO.setPhoneNumber(dataText);
-                    break;
-                case "음식 종류":
-                    storeTableVO.setFoodType(dataText);
-                    break;
-                case "가격대":
-                    storeTableVO.setPriceRange(dataText);
-                    break;
-                case "주차":
-                    storeTableVO.setParking(dataText);
-                    break;
-                case "영업시간":
-                    storeTableVO.setTime(dataText);
-                    break;
-                case "마지막주문":
-                    storeTableVO.setLastOrder(dataText);
-                    break;
-                case "웹 사이트":
-                    storeTableVO.setWebsite(dataText);
-                    break;
-                default:
-                    // Handle unrecognized header value, if needed
-                    break;
+
+        //크롤링 해야하는 테이블에 어떤곳은 메뉴 항목이 있고 그 항목에 tr 이 없어서 if 넣어줌
+        if (table != null) {
+            Elements rows = table.select("tbody tr");
+
+            for (Element row : rows) {
+                Element header = row.selectFirst("th");
+                Element data = row.selectFirst("td");
+                String headerText = header.text();
+                String dataText = data.text();
+
+                switch (headerText) {
+                    case "주소":
+                        storeTableVO.setAddress(dataText);
+                        break;
+                    case "전화번호":
+                        storeTableVO.setPhoneNumber(dataText);
+                        break;
+                    case "음식 종류":
+                        storeTableVO.setFoodType(dataText);
+                        break;
+                    case "가격대":
+                        storeTableVO.setPriceRange(dataText);
+                        break;
+                    case "주차":
+                        storeTableVO.setParking(dataText);
+                        break;
+                    case "영업시간":
+                        storeTableVO.setTime(dataText);
+                        break;
+                    case "마지막주문":
+                        storeTableVO.setLastOrder(dataText);
+                        break;
+                    case "웹 사이트":
+                        storeTableVO.setWebsite(dataText);
+                        break;
+                    default:
+                        break;
+                }
+
+                System.out.println(headerText + ": " + dataText);
             }
-            System.out.println(headerText + ": " + dataText);
         }
+
         return storeTableVO;
     }
+
     //이미지 리스트 가져오기
-    public List<StoreVO>getStoreDetailImage(String storeURL) throws Exception{
+    public List<StoreVO> getStoreDetailImage(String storeURL) throws Exception {
         List<StoreVO> storeList = new ArrayList<>();
         Document document = Jsoup.connect(storeURL).get();
         Elements images = document.select("figure.restaurant-photos-item");
-        for(Element image : images ) {
+        for (Element image : images) {
             StoreVO storeVO = StoreVO.builder()
                     .image(image.select("img.center-croping").attr("abs:src")) // 이미지
                     .build();
@@ -125,23 +133,9 @@ public class StoreService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public List<StoreCommentVO> getStoreComment(String storeURL) throws Exception {
         //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
-        System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
 
 
 //        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
@@ -150,58 +144,63 @@ public class StoreService {
         //창 숨기는 옵션 추가 (댓글이 뜨지 않는 문제가 있었는데 이걸로 해결 댓글에 이미지가 포함되서 인듯)
         options.addArguments("--disable-popup-blocking");       //팝업안띄움
         options.addArguments("headless");                       //브라우저 안띄움
-//        options.addArguments("--disable-gpu");			//gpu 비활성화
+        options.addArguments("--disable-gpu");			//gpu 비활성화
 //        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
-
+//      크롬실행 객체 만들기
         WebDriver driver = new ChromeDriver(options);
 //        WebDriver driver = new ChromeDriver();
 
+        try {
+            //URL 접속(접속할 곳 적어주기)
+            driver.get(storeURL);
+            //
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-//        WebDriver driver = null;
+            List<StoreCommentVO> commentList = new ArrayList<>();
+            //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60)); //조건 성립 x시 6초 대기
 
-        //크롬실행 객체 만들기
-//        driver = new ChromeDriver(options);
+            try {
+                wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
 
-        //URL 접속(접속할 곳 적어주기)
-        driver.get(storeURL);
-        //
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            } catch (TimeoutException e) {
+                System.out.println("Timeout: More button not found");
+            }
 
-        List<StoreCommentVO> commentList = new ArrayList<>();
-        //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));  //조건 성립 x시 6초 대기
-        //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
+
+            //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
 //        wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
-        Thread.sleep(10000);
-        //액션 추가 (움직이게 하는 기능) 액션 객체 생성
-        Actions actions = new Actions(driver);
-        //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
-        for(int i=1;i<=6;i++) {
-            actions.sendKeys(Keys.END).perform();
-            Thread.sleep(1500);
-            actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
-        }
+            //액션 추가 (움직이게 하는 기능) 액션 객체 생성
+            Actions actions = new Actions(driver);
+            //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
+            for (int i = 1; i <= 6; i++) {
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                Thread.sleep(1000);
+                actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
+                Thread.sleep(1000);
+            }
 
-        List<WebElement> elements = driver.findElements(By.cssSelector("a.RestaurantReviewItem__Link"));
-        for(WebElement element : elements) {
-            StoreCommentVO storeCommentVO = new StoreCommentVO();
-            String userName = element.findElement(By.className("RestaurantReviewItem__UserNickName")).getText();
-            storeCommentVO.setUserName(userName);
-            String contents = element.findElement(By.className("RestaurantReviewItem__ReviewText")).getText();
-            storeCommentVO.setContents(contents);
-            String rating = element.findElement(By.className("RestaurantReviewItem__RatingText")).getText();
-            storeCommentVO.setRating(rating);
-            String date = element.findElement(By.className("RestaurantReviewItem__ReviewDate")).getText();
-            storeCommentVO.setDate(date);
+            List<WebElement> elements = driver.findElements(By.cssSelector("a.RestaurantReviewItem__Link"));
+            for (WebElement element : elements) {
+                StoreCommentVO storeCommentVO = new StoreCommentVO();
+                String userName = element.findElement(By.className("RestaurantReviewItem__UserNickName")).getText();
+                storeCommentVO.setUserName(userName);
+                String contents = element.findElement(By.className("RestaurantReviewItem__ReviewText")).getText();
+                storeCommentVO.setContents(contents);
+                String rating = element.findElement(By.className("RestaurantReviewItem__RatingText")).getText();
+                storeCommentVO.setRating(rating);
+                String date = element.findElement(By.className("RestaurantReviewItem__ReviewDate")).getText();
+                storeCommentVO.setDate(date);
 
-            log.error("유저네임 : " + userName);
-            log.error("콘텐츠 : " + contents);
-            log.error("레이팅 : " + rating);
-            log.error("날짜 : " + date);
-            commentList.add(storeCommentVO);
-        }
+                log.error("유저네임 : " + userName);
+                log.error("콘텐츠 : " + contents);
+                log.error("레이팅 : " + rating);
+                log.error("날짜 : " + date);
+                commentList.add(storeCommentVO);
+            }
 
-        //클릭이가능할때까지 대기
+            //클릭이가능할때까지 대기
 //        wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-sync")));
 //        System.out.println(driver);
 //        Thread.sleep(5000);
@@ -214,8 +213,11 @@ public class StoreService {
 //
 //        WebElement element =  driver.findElement(By.className("col-lg-8"));	//ID 정보
 
-        // 드라이버 종료
-        driver.quit();
-        return commentList;
+            // 드라이버 종료
+            return commentList;
+
+        } finally {
+            driver.quit();
+        }
     }
 }

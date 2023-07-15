@@ -63,11 +63,11 @@ hr {
 }
 
 .comment-ratings i {
-    font-size: 13px
+    font-size: 10px
 }
 
 .username {
-    font-size: 12px
+    font-size: 14px;
 }
 
 .comment-profile {
@@ -147,6 +147,10 @@ hr {
 
 .comment-ratings i {
     color: #f6d151
+}
+
+.comment-ratings {
+    font-size: 14px;
 }
 
 .followers {

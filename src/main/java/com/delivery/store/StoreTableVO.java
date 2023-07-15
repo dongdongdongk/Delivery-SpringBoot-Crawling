@@ -14,4 +14,5 @@ public class StoreTableVO {
     private String time;
     private String lastOrder;
     private String website;
+    private String menu;
 }
