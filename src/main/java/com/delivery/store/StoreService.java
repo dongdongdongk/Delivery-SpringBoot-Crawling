@@ -150,8 +150,8 @@ public class StoreService {
         //창 숨기는 옵션 추가 (댓글이 뜨지 않는 문제가 있었는데 이걸로 해결 댓글에 이미지가 포함되서 인듯)
         options.addArguments("--disable-popup-blocking");       //팝업안띄움
         options.addArguments("headless");                       //브라우저 안띄움
-        options.addArguments("--disable-gpu");			//gpu 비활성화
-        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
+//        options.addArguments("--disable-gpu");			//gpu 비활성화
+//        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
 
         WebDriver driver = new ChromeDriver(options);
 //        WebDriver driver = new ChromeDriver();
@@ -166,19 +166,19 @@ public class StoreService {
         driver.get(storeURL);
         //
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //창이 뜨고 바로 꺼지지 않게 5초정도 대기
+
         List<StoreCommentVO> commentList = new ArrayList<>();
         //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));  //조건 성립 x시 6초 대기
         //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
-        wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
-
+//        wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
+        Thread.sleep(10000);
         //액션 추가 (움직이게 하는 기능) 액션 객체 생성
         Actions actions = new Actions(driver);
         //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
-        for(int i=1;i<=7;i++) {
+        for(int i=1;i<=6;i++) {
             actions.sendKeys(Keys.END).perform();
-            Thread.sleep(4000);
+            Thread.sleep(1500);
             actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
         }
 
