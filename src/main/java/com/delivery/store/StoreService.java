@@ -142,16 +142,16 @@ public class StoreService {
         //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
         System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
 
+
 //        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        WebDriver driver = new ChromeDriver(options);
-
-//        WebDriver driver = new ChromeDriver();
-
         //창 숨기는 옵션 추가
 //        options.addArguments("headless");
-//
+        WebDriver driver = new ChromeDriver(options);
+//        WebDriver driver = new ChromeDriver();
+
+
 //        WebDriver driver = null;
 
         //크롬실행 객체 만들기
@@ -162,7 +162,7 @@ public class StoreService {
         //창이 뜨고 바로 꺼지지 않게 5초정도 대기
         List<StoreCommentVO> commentList = new ArrayList<>();
         //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  //조건 성립 x시 6초 대기
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));  //조건 성립 x시 6초 대기
         //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
         wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
 
@@ -179,19 +179,20 @@ public class StoreService {
         List<WebElement> elements = driver.findElements(By.cssSelector("a.RestaurantReviewItem__Link"));
         for(WebElement element : elements) {
             StoreCommentVO storeCommentVO = new StoreCommentVO();
-            String userName = element.findElement(By.className("RestaurantReviewItem__User")).getText();
+            String userName = element.findElement(By.className("RestaurantReviewItem__UserNickName")).getText();
             storeCommentVO.setUserName(userName);
             String contents = element.findElement(By.className("RestaurantReviewItem__ReviewText")).getText();
             storeCommentVO.setContents(contents);
             String rating = element.findElement(By.className("RestaurantReviewItem__RatingText")).getText();
-            storeCommentVO.setContents(rating);
+            storeCommentVO.setRating(rating);
             String date = element.findElement(By.className("RestaurantReviewItem__ReviewDate")).getText();
-            storeCommentVO.setContents(date);
+            storeCommentVO.setDate(date);
 
             log.error("유저네임 : " + userName);
             log.error("콘텐츠 : " + contents);
             log.error("레이팅 : " + rating);
             log.error("날짜 : " + date);
+            commentList.add(storeCommentVO);
         }
 
         //클릭이가능할때까지 대기

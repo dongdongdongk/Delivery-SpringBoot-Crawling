@@ -34,6 +34,7 @@ public class StoreController {
         List<StoreVO>storeImages = storeService.getStoreDetailImage(storeURL);
         StoreTableVO storeTableVO = storeService.getStoreTable(storeURL);
         List<StoreCommentVO>storeComment = storeService.getStoreComment(storeURL);
+        mv.addObject("storeCommentList",storeComment);
         mv.addObject("storeImages",storeImages);
         mv.addObject("storeDetail",storeDetail);
         mv.addObject("storeTable",storeTableVO);

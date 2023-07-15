@@ -50,42 +50,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="card mt-2"><h6>Reviews</h6>
-                <div class="d-flex flex-row">
-                    <div class="stars"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i></div>
-                    <span class="ml-1 font-weight-bold">4.6</span></div>
-                <hr>
-                <div class="badges"><span class="badge bg-dark ">All (230)</span> <span class="badge bg-dark "> <i
-                        class="fa fa-image"></i> 23 </span> <span class="badge bg-dark "> <i
-                        class="fa fa-comments-o"></i> 23 </span> <span class="badge bg-warning"> <i
-                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                        class="fa fa-star"></i> <span class="ml-1">2,123</span> </span></div>
-                <hr>
-                <div class="comment-section">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-row align-items-center"><img  src="https://i.imgur.com/o5uMfKo.jpg"
-                                                                             class="rounded-circle profile-image oriImg">
-                            <div class="d-flex flex-column ml-1 comment-profile">
-                                <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                <span class="username">Lori Benneth</span></div>
-                        </div>
-                        <div class="date"><span class="text-muted">2 May</span></div>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-row align-items-center"><img src="https://i.imgur.com/tmdHXOY.jpg"
-                                                                             class="rounded-circle profile-image">
-                            <div class="d-flex flex-column ml-1 comment-profile">
-                                <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                <span class="username">Timona Simaung</span></div>
-                        </div>
-                        <div class="date"><span class="text-muted">12 May</span></div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-md-7">
             <div class="card">
@@ -189,12 +153,44 @@
                 <div class="d-flex align-items-center mt-3"><span class="dot"></span> <span class="bullet-text">마지막 ${storeDetail.lastUpdate} </span>
                 </div>
             </div>
-            <div class="card mt-2"><span>미리보기:</span>
-                <div class="similar-products mt-2 d-flex flex-row">
-                    <c:forEach var="storeImages" items="${storeImages}" >
-                        <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                            <img src="${storeImages.image}" class="card-img-top" alt="...">
+<%--            <div class="card mt-2"><span>미리보기:</span>--%>
+<%--                <div class="similar-products mt-2 d-flex flex-row">--%>
+<%--                    <c:forEach var="storeImages" items="${storeImages}" >--%>
+<%--                        <div class="card border p-1" style="width: 9rem;margin-right: 3px;">--%>
+<%--                            <img src="${storeImages.image}" class="card-img-top" alt="...">--%>
+<%--                        </div>--%>
+<%--                    </c:forEach>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+            <div class="card mt-2"><h6>리뷰</h6>
+                <hr>
+                <div class="comment-section">
+                    <c:forEach var="storeCommentList" items="${storeCommentList}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row align-items-center"><img  src="/img/userImg.png"
+                                                                                  class="rounded-circle profile-image oriImg">
+                                <div class="d-flex flex-column ml-1 comment-profile">
+                                    <c:choose>
+                                        <c:when test="${storeCommentList.rating eq '맛있다'}">
+                                            <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i>
+                                            </div>
+                                        </c:when>
+                                        <c:when test="${storeCommentList.rating eq '괜찮다'}">
+                                            <div class="comment-ratings"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="comment-ratings"><i class="fa fa-star"></i>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <span class="username">${storeCommentList.userName}</span></div>
+                            </div>
+                            <div class="date"><span class="text-muted">${storeCommentList.date}</span></div>
                         </div>
+                            <div class="contents">${storeCommentList.contents}</div>
+                        <hr>
                     </c:forEach>
                 </div>
             </div>
