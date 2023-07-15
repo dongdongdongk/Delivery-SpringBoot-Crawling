@@ -5,10 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -48,7 +45,6 @@ public class StoreService {
                     .build();
             storeList.add(storeVO);
         }
-
         return storeList;
     }
     //가게 이름, 업데이트 날짜 등등 가져오기
@@ -142,15 +138,17 @@ public class StoreService {
 
 
 
-//    public List<StoreVO> getStoreList() throws Exception {
-//        //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
-//        System.setProperty("webdriver.chrome.driver","C:\\win\\chromedriver_win32\\chromedriver.exe");
-//
-//        //옵션 생성
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--remote-allow-origins=*");
-//        WebDriver driver = new ChromeDriver(options);
+    public List<StoreCommentVO> getStoreComment(String storeURL) throws Exception {
+        //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
+
+//        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        WebDriver driver = new ChromeDriver(options);
+
 //        WebDriver driver = new ChromeDriver();
+
         //창 숨기는 옵션 추가
 //        options.addArguments("headless");
 //
@@ -160,24 +158,44 @@ public class StoreService {
 //        driver = new ChromeDriver(options);
 
         //URL 접속(접속할 곳 적어주기)
-//        driver.get("https://www.diningcode.com/list.dc?query=%EA%B0%95%EC%84%9C%EA%B5%AC%20%ED%99%94%EA%B3%A1%EB%8F%99%20%ED%94%BC%EC%9E%90");
+        driver.get(storeURL);
         //창이 뜨고 바로 꺼지지 않게 5초정도 대기
-//        List<StoreVO> storeVOList = new ArrayList<>();
-        //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        //액션 추가 (움직이게 하는 기능)
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(driver.findElement(By.className("sc-hhyLtv jVyekH Poi__List__Wrap"))).click();
-//        actions.sendKeys(Keys.END).perform();
-//        Thread.sleep(2000);
-//        actions.sendKeys(Keys.END).perform();
-//        Thread.sleep(2000);
-//        actions.sendKeys(Keys.END).perform();
-//        Thread.sleep(2000);
+        List<StoreCommentVO> commentList = new ArrayList<>();
+        //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  //조건 성립 x시 6초 대기
+        //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
+        wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
+
+        //액션 추가 (움직이게 하는 기능) 액션 객체 생성
+        Actions actions = new Actions(driver);
+        //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
+        for(int i=1;i<=7;i++) {
+            actions.sendKeys(Keys.END).perform();
+            actions.sendKeys(Keys.END).perform();
+            Thread.sleep(2000);
+            actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
+        }
+
+        List<WebElement> elements = driver.findElements(By.cssSelector("a.RestaurantReviewItem__Link"));
+        for(WebElement element : elements) {
+            StoreCommentVO storeCommentVO = new StoreCommentVO();
+            String userName = element.findElement(By.className("RestaurantReviewItem__User")).getText();
+            storeCommentVO.setUserName(userName);
+            String contents = element.findElement(By.className("RestaurantReviewItem__ReviewText")).getText();
+            storeCommentVO.setContents(contents);
+            String rating = element.findElement(By.className("RestaurantReviewItem__RatingText")).getText();
+            storeCommentVO.setContents(rating);
+            String date = element.findElement(By.className("RestaurantReviewItem__ReviewDate")).getText();
+            storeCommentVO.setContents(date);
+
+            log.error("유저네임 : " + userName);
+            log.error("콘텐츠 : " + contents);
+            log.error("레이팅 : " + rating);
+            log.error("날짜 : " + date);
+        }
 
         //클릭이가능할때까지 대기
 //        wait.until(ExpectedConditions.elementToBeClickable(By.id("btn-sync")));
-//        log.error("::::::::::{}:::::::::::", driver.getPageSource());
 //        System.out.println(driver);
 //        Thread.sleep(5000);
 //
@@ -186,14 +204,11 @@ public class StoreService {
 //
 //        //텍스트가 "최신정보"가 될때까지 대기
 //        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//        wait.until(ExpectedConditions.textToBe(By.id("btn-sync"), "최신정보"));
 //
 //        WebElement element =  driver.findElement(By.className("col-lg-8"));	//ID 정보
 
         // 드라이버 종료
-//        driver.quit();
-
-//        return storeVOList;
-//        return storeVOList;
-//    }
+        driver.quit();
+        return commentList;
+    }
 }

@@ -98,7 +98,7 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 ">
-            <!-- Card-->
+            <a onclick="redirectToSalad()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/salad.jpg" alt=""
@@ -107,9 +107,10 @@
 
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToYasick()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/night.jpg" alt=""
@@ -118,9 +119,10 @@
 
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToJapanese()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/Japanese.jpg" alt=""
@@ -129,9 +131,10 @@
 
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToSalad()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/fruit.jpg" alt=""
@@ -140,9 +143,10 @@
 
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToDessert()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/dessert.jpg" alt=""
@@ -151,9 +155,10 @@
 
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToKorean()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/Korean.jpg" alt=""
@@ -162,12 +167,13 @@
 
                 </div>
             </div>
+            </a>
         </div>
 
 
 
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mt-3">
-            <!-- Card-->
+            <a onclick="redirectToChinese()">
             <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-1"><img
                         src="img/Chinese.jpg" alt=""
@@ -182,6 +188,7 @@
 <%--                    </ul>--%>
                 </div>
             </div>
+             </a>
         </div>
     </div>
 
@@ -198,6 +205,28 @@
     function redirectToBunsik() {
         window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "분식";
     }
+    function redirectToSalad() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "샐러드";
+    }
+    function redirectToYasick() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "야식";
+    }
+    function redirectToJapanese() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "일식";
+    }
+    function redirectToBunsik() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "과일";
+    }
+    function redirectToDessert() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "디저트";
+    }
+    function redirectToKorean() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "한식";
+    }
+    function redirectToChinese() {
+        window.location.href = '/store/list?storeURL=' + "https://www.mangoplate.com/search/" + addressList + "중식";
+    }
+
 
 </script>
 </body>

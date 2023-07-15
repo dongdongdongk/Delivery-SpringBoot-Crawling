@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -55,29 +56,36 @@
 </div>
 <c:import url="../common/style.jsp"/>
 <section style="background-color: #fcfbfb;">
-<c:forEach var="storeList" items="${storeList}">
-    <div class="container mt-5 mb-5">
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
-                <div class="row p-2 bg-white border rounded">
-                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${storeList.image}"></div>
-                    <div class="col-md-6 mt-1">
-                        <h5>${storeList.title}</h5>
-                        <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
-                        </div>
-                        <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>리뷰수:${storeList.reviewCount}</span><br><span class="dot"></span><span>조회수:${storeList.view}<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">${storeList.subdivision}<br><br></p>
-                    </div>
-                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+    <c:forEach var="storeList" items="${storeList}">
+       <c:choose>
+           <c:when test="${fn:length(storeList.title) < 1}">
+               <h1>음식점이 없습니다</h1>
+           </c:when>
+           <c:otherwise>
+            <div class="container mt-5 mb-5">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-10">
+                        <div class="row p-2 bg-white border rounded">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${storeList.image}"></div>
+                            <div class="col-md-6 mt-1">
+                                <h5>${storeList.title}</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                                </div>
+                                <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>리뷰수:${storeList.reviewCount}</span><br><span class="dot"></span><span>조회수:${storeList.view}<br></span></div>
+                                <p class="text-justify text-truncate para mb-0">${storeList.subdivision}<br><br></p>
+                            </div>
+                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
 
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="redirectToDetail('${storeList.url}')" >Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="redirectToDetail('${storeList.url}')" >Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</c:forEach>
+           </c:otherwise>
+       </c:choose>
+    </c:forEach>
 </section>
 
 <script>
