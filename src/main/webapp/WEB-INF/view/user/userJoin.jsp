@@ -180,7 +180,7 @@
 
                     <div class="form-group col-lg-12 mx-auto mb-0">
                         <button type="submit" class="btn btn-primary btn-block py-2">
-                            <span class="font-weight-bold">Create your account</span>
+                            <span class="font-weight-bold">계정 만들기</span>
                         </button>
                     </div>
 <%--                    <!-- Submit Button -->--%>
@@ -201,11 +201,11 @@
                     <div class="form-group col-lg-12 mx-auto">
                         <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
                             <i class="fa fa-facebook-f mr-2"></i>
-                            <span class="font-weight-bold">Continue with Facebook</span>
+                            <span class="font-weight-bold">구글로 가입하기</span>
                         </a>
                         <a href="#" class="btn btn-primary btn-block py-2 btn-twitter">
                             <i class="fa fa-twitter mr-2"></i>
-                            <span class="font-weight-bold">Continue with Twitter</span>
+                            <span class="font-weight-bold">카카오톡으로 가입하기</span>
                         </a>
                     </div>
 

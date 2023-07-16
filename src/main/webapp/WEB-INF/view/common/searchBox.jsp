@@ -103,6 +103,9 @@
         .color-red{
             filter: invert(45%) sepia(91%) saturate(2990%) hue-rotate(317deg) brightness(94%) contrast(88%);
         }
+        .bg-light {
+            background-color: #ffffff!important;
+        }
 
     </style>
 
@@ -111,74 +114,80 @@
 <div class="container-fluid mt-4 m-0 " >
     <div class="row d-flex justify-content-center">
         <div class="col-12">
-            <div class="card p-4 mt-3 bg-light">
+            <div class="card p-2  bg-light">
                 <h3 class="heading mt-5 text-center">원하시는 메뉴 또는 카테고리를 입력해 주세요</h3>
                 <div class="d-flex justify-content-center px-5">
-                    <div class="search">
+                    <div class="search d-flex justify-content-center">
                         <form onsubmit="searchPlaces(); return false;">
                             <input type="hidden" id="address" value="">
-                            <input type="text" class="search-input" placeholder="먹고싶은 메뉴,가게 검색" name="" id="keyword" size="15" value="">
-                            <a href="#" onclick="searchPlaces();" class="search-icon"> <i class="fa fa-search"></i></a>
+                            <input type="text" class="ui-autocomplete-input shadow" placeholder="먹고싶은 메뉴,가게 검색" name="" id="keyword" size="15" value="">
+<%--                            <a href="#" onclick="searchPlaces();" class="search-icon"> <i class="fa fa-search"></i></a>--%>
+                            <button type="submit" value="" id="search_btn" class="search_btn shadow " onclick="searchPlaces()" placeholder="먹고싶은 메뉴,가게 검색" id="keyword">
+                                <i class="fa fa-search inputicon"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
-                <div class="row mt-4 g-1 px-4 mb-5">
-                    <div class="col-sm-2">
+
+
+
+                <div class="row mt-4 g-1 px-4 mb-3">
+                    <div class="col-sm-2 shadow">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('점심식사');"> <img src="https://cdn-icons-png.flaticon.com/512/4200/4200159.png" width="50" class="color-red" >
                             <div class="text-center mg-text"> <span class="mg-text">#점심식사</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('혼술');"> <img src="https://cdn-icons-png.flaticon.com/512/701/701986.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#혼술</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('데이트 코스');"> <img src="https://cdn-icons-png.flaticon.com/512/3938/3938278.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#데이트코스</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('혼밥');"> <img src="https://cdn-icons-png.flaticon.com/512/9742/9742643.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#혼밥</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('안심식당');"> <img src="https://cdn-icons-png.flaticon.com/512/4785/4785856.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#안심식당</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('정육식당');"> <img src="https://cdn-icons-png.flaticon.com/512/869/869727.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#정육식당</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('24시간식당');"> <img src="https://cdn-icons-png.flaticon.com/512/899/899061.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#24시간식당</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('이동약자 접근');"> <img src="https://cdn-icons-png.flaticon.com/512/10450/10450399.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#이동약자접근</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('맛집');"> <img src="https://cdn-icons-png.flaticon.com/512/1152/1152274.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#맛집</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('회식장소');"> <img src="https://cdn-icons-png.flaticon.com/512/4645/4645567.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#회식장소</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('가족모임');"> <img src="https://cdn-icons-png.flaticon.com/512/4596/4596368.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#가족모임</span> </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 shadow-sm">
                         <div class="card-inner p-3 d-flex flex-column align-items-center" onclick="updateKeyword('제로페이 음식점');"> <img src="https://cdn-icons-png.flaticon.com/512/6296/6296508.png" width="50" class="color-red">
                             <div class="text-center mg-text"> <span class="mg-text">#제로페이</span> </div>
                         </div>

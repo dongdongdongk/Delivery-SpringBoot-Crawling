@@ -15,4 +15,5 @@ public class StoreTableVO {
     private String lastOrder;
     private String website;
     private String menu;
+    private String restDay;
 }

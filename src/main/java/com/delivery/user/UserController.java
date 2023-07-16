@@ -56,6 +56,14 @@ public class UserController {
         return mv;
     }
 
+    @GetMapping("userLogin")
+    public ModelAndView getLogin(@ModelAttribute() UserVO userVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/userLogin");
+        return mv;
+    }
+
+
     @ResponseBody
     @GetMapping("/overlapCheck")
     public int overlapCheck(String value, String valueType) {

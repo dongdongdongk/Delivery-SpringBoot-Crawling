@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/storeDetail.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -48,15 +49,19 @@
 <%--                            <li data-thumb="${storeImages.image}"><img class="oriImg" src="${storeImages.image}"/></li>--%>
 <%--                        </c:forEach>--%>
 
-                        <c:forEach var="storeImages" items="${storeImages}">
-                            <li data-thumb="${storeImages.image}">
-                                <img class="oriImg" src="${storeImages.image}"/>
-                            </li>
-                            <c:if test="${empty storeImages.image}">
+                        <c:forEach var="storeImages" items="${storeImages}" varStatus="status">
+                           <c:choose>
+                               <c:when test="${status.end < 1}">
                                     <li data-thumb="/img/noImg.gif">
-                                        <img class="oriImg" src="/img/noImg.gif" alt="이미지 없음"/>
+                                        <img class="oriImg" src="img/noImg.gif" alt="이미지 없음"/>
                                     </li>
-                            </c:if>
+                               </c:when>
+                               <c:otherwise>
+                                    <li data-thumb="${storeImages.image}">
+                                        <img class="oriImg" src="${storeImages.image}"/>
+                                    </li>
+                               </c:otherwise>
+                           </c:choose>
 
                         </c:forEach>
 
@@ -133,6 +138,13 @@
                         <i class="fa fa-calendar-check-o"></i>
                         <span class="ml-1">마지막 주문 : ${storeTable.lastOrder}</span>
                         <c:if test="${empty storeTable.lastOrder}">
+                            <span class="ml-1">내용 없음</span>
+                        </c:if>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mt-2">
+                        <i class="fa fa-calendar-check-o"></i>
+                        <span class="ml-1">휴일 : ${storeTable.restDay}</span>
+                        <c:if test="${empty storeTable.restDay}">
                             <span class="ml-1">내용 없음</span>
                         </c:if>
                     </div>
@@ -219,6 +231,7 @@
         </div>
     </div>
 </div>
+<c:import url="../common/footer.jsp"/>
 <script>
     $(document).ready(function () {
         let visibleReviews = 3;

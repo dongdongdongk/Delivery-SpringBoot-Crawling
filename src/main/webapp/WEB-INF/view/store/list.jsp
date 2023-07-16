@@ -12,6 +12,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/storeList.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
 <style>
@@ -45,6 +46,7 @@
         display: inline-block;
     }
 
+
 </style>
 <c:import url="../common/header.jsp"/>
 <div class="header-image-container">
@@ -55,18 +57,18 @@
 
 </div>
 <c:import url="../common/style.jsp"/>
-<section style="background-color: #fcfbfb;">
-    <c:forEach var="storeList" items="${storeList}">
+<section style="background-color: #ffffff;">
+    <c:forEach var="storeList" items="${storeList}" varStatus="status">
        <c:choose>
-           <c:when test="${fn:length(storeList.title) < 1}">
+           <c:when test="${empty storeList}">
                <h1>음식점이 없습니다</h1>
            </c:when>
            <c:otherwise>
-            <div class="container mt-5 mb-5">
+            <div class="container mt-5 mb-5 shadow-sm">
                 <div class="d-flex justify-content-center row">
-                    <div class="col-md-10">
-                        <div class="row p-2 bg-white border rounded">
-                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${storeList.image}"></div>
+                    <div class="col-md-12">
+                        <div class="row p-2 bg-white border rounded py-3">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image shadow-sm" src="${storeList.image}"></div>
                             <div class="col-md-6 mt-1">
                                 <h5>${storeList.title}</h5>
                                 <div class="d-flex flex-row">
@@ -77,7 +79,7 @@
                             </div>
                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
 
-                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="redirectToDetail('${storeList.url}')" >Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm shadow-sm" type="button" onclick="redirectToDetail('${storeList.url}')" >상세정보</button><button class="btn btn-outline-primary btn-sm mt-2 shadow-sm" type="button">즐겨찾기</button></div>
                             </div>
                         </div>
                     </div>
@@ -87,18 +89,12 @@
        </c:choose>
     </c:forEach>
 </section>
-
+<c:import url="../common/footer.jsp"/>
 <script>
     function redirectToDetail(storeURL) {
         window.location.href = '/store/detail?storeURL=' + "https://www.mangoplate.com" + encodeURIComponent(storeURL);
     }
 </script>
-<%--<h1>List</h1>--%>
-
-<%--<c:forEach var="storeList" items="${storeList}">--%>
-<%--    <h3>${storeList.title}</h3>--%>
-<%--    <img src="${storeList.image}">--%>
-<%--</c:forEach>--%>
 </body>
 </html>
 

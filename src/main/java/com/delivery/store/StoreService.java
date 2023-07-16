@@ -72,49 +72,51 @@ public class StoreService {
         Document document = Jsoup.connect(storeURL).get();
         Element table = document.select("table.info.no_menu").first();
 
+
         //크롤링 해야하는 테이블에 어떤곳은 메뉴 항목이 있고 그 항목에 tr 이 없어서 if 넣어줌
-        if (table != null) {
-            Elements rows = table.select("tbody tr");
+        if (table == null) {
+             table = document.select("table.info").first();
+        }
+        Elements rows = table.select("tbody tr");
 
-            for (Element row : rows) {
-                Element header = row.selectFirst("th");
-                Element data = row.selectFirst("td");
-                String headerText = header.text();
-                String dataText = data.text();
+        for (Element row : rows) {
+            Element header = row.selectFirst("th");
+            Element data = row.selectFirst("td");
+            String headerText = header.text();
+            String dataText = data.text();
 
-                switch (headerText) {
-                    case "주소":
-                        storeTableVO.setAddress(dataText);
-                        break;
-                    case "전화번호":
-                        storeTableVO.setPhoneNumber(dataText);
-                        break;
-                    case "음식 종류":
-                        storeTableVO.setFoodType(dataText);
-                        break;
-                    case "가격대":
-                        storeTableVO.setPriceRange(dataText);
-                        break;
-                    case "주차":
-                        storeTableVO.setParking(dataText);
-                        break;
-                    case "영업시간":
-                        storeTableVO.setTime(dataText);
-                        break;
-                    case "마지막주문":
-                        storeTableVO.setLastOrder(dataText);
-                        break;
-                    case "웹 사이트":
-                        storeTableVO.setWebsite(dataText);
-                        break;
-                    default:
-                        break;
+            switch (headerText) {
+                case "주소":
+                    storeTableVO.setAddress(dataText);
+                    break;
+                case "전화번호":
+                    storeTableVO.setPhoneNumber(dataText);
+                    break;
+                case "음식 종류":
+                    storeTableVO.setFoodType(dataText);
+                    break;
+                case "가격대":
+                    storeTableVO.setPriceRange(dataText);
+                    break;
+                case "주차":
+                    storeTableVO.setParking(dataText);
+                    break;
+                case "영업시간":
+                    storeTableVO.setTime(dataText);
+                    break;
+                case "마지막주문":
+                    storeTableVO.setLastOrder(dataText);
+                    break;
+                case "웹 사이트":
+                    storeTableVO.setWebsite(dataText);
+                    break;
+                case "휴일" :
+                    storeTableVO.setRestDay(dataText);
+                default:
+                    break;
                 }
-
                 System.out.println(headerText + ": " + dataText);
             }
-        }
-
         return storeTableVO;
     }
 
@@ -144,8 +146,8 @@ public class StoreService {
         //창 숨기는 옵션 추가 (댓글이 뜨지 않는 문제가 있었는데 이걸로 해결 댓글에 이미지가 포함되서 인듯)
         options.addArguments("--disable-popup-blocking");       //팝업안띄움
         options.addArguments("headless");                       //브라우저 안띄움
-        options.addArguments("--disable-gpu");			//gpu 비활성화
-//        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
+//        options.addArguments("--disable-gpu");			//gpu 비활성화
+        options.addArguments("--blink-settings=imagesEnabled=false"); //이미지 다운 안받음
 //      크롬실행 객체 만들기
         WebDriver driver = new ChromeDriver(options);
 //        WebDriver driver = new ChromeDriver();
@@ -158,27 +160,27 @@ public class StoreService {
 
             List<StoreCommentVO> commentList = new ArrayList<>();
             //조건이 성립할때까지 기다림 조건이 성립하지 않으면 설정된 시간만큼 기다림 wait 객체 생성
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60)); //조건 성립 x시 6초 대기
-
-            try {
-                wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
-
-            } catch (TimeoutException e) {
-                System.out.println("Timeout: More button not found");
-            }
-
+//          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60)); //조건 성립 x시 6초 대기
 
             //class 이름 , 에 더보기 라는 값이 생성 될 떄 까지 대기
-//        wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
+//           wait.until(ExpectedConditions.textToBe(By.className("RestaurantReviewList__MoreReviewButton"), "더보기"));
             //액션 추가 (움직이게 하는 기능) 액션 객체 생성
             Actions actions = new Actions(driver);
             //화면을 end 버튼으로 내리고 더보기 버튼 클릭 반복 (댓글을 전부 불러오기 위한 기능)
             for (int i = 1; i <= 6; i++) {
-                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                WebElement moreButton = driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"));
+                //너무 빨리 내리니까 댓글을 못읽는다...
+                Thread.sleep(2000);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 Thread.sleep(1000);
-                actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
-                Thread.sleep(1000);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                // 버튼이 없을 때 반복문을 빠져나가서 시간초과 오류 잡는기능
+                if (moreButton != null && moreButton.isDisplayed()) {
+                    actions.moveToElement(moreButton).click();
+                } else {
+                    break;
+                }
+//                actions.moveToElement(driver.findElement(By.className("RestaurantReviewList__MoreReviewButton"))).click();
             }
 
             List<WebElement> elements = driver.findElements(By.cssSelector("a.RestaurantReviewItem__Link"));

@@ -82,7 +82,7 @@
         <span class="headtext">
             <a href="/">배달배달</a>
 
-            <button type="button" class="btn btn-outline-light ml-6">로그인</button>
+            <a href="/user/userLogin"><button type="button" class="btn btn-outline-light ">로그인</button></a>
             <a href="/user/userJoin"><button type="button" class="btn btn-outline-light ">회원가입</button></a>
 
         </span>
