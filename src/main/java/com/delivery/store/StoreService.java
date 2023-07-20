@@ -137,7 +137,7 @@ public class StoreService {
 
     public List<StoreCommentVO> getStoreComment(String storeURL) throws Exception {
         //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\win\\chromedriver_win32\\chromedriver.exe");
 
 
 //        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
