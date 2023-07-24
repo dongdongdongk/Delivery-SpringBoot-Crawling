@@ -21,4 +21,5 @@ public class StoreVO {
     private String reviewCount;
     private String view;
     private String url;
+    private String id;
 }

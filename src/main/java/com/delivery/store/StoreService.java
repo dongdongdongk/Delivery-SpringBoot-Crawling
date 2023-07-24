@@ -1,5 +1,6 @@
 package com.delivery.store;
 
+import com.delivery.user.WishListVO;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,6 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -26,11 +28,12 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 public class StoreService {
-    private static String storeURL = "https://www.mangoplate.com/search/%EA%B0%95%EC%84%9C%EA%B5%AC%20%ED%99%94%EA%B3%A1%EB%8F%99%20%ED%94%BC%EC%9E%90%20";
-    private static String storeDetailURL = "https://www.mangoplate.com/restaurants/QPr6GVIc4Y";
+
+    @Autowired
+    private StoreDAO storeDAO;
 
     //스토어 리스트 정보 가져오기
-    public List<StoreVO> getStoreList(String storeURL) throws IOException {
+    public List<StoreVO> getStoreList(String storeURL) throws Exception {
         List<StoreVO> storeList = new ArrayList<>();
         Document document = Jsoup.connect(storeURL).get();
         Elements contents = document.select("figure.restaurant-item");
@@ -45,6 +48,7 @@ public class StoreService {
                     .url(content.select("a.only-desktop_not").attr("href"))
                     .build();
             storeList.add(storeVO);
+            storeDAO.setUserStoreSave(storeVO);
         }
         return storeList;
     }
@@ -60,6 +64,7 @@ public class StoreService {
                 .build();
 
 
+
 //        log.error("::::{}::::::",contents);
 
 
@@ -71,8 +76,24 @@ public class StoreService {
         StoreTableVO storeTableVO = new StoreTableVO();
         Document document = Jsoup.connect(storeURL).get();
         Element table = document.select("table.info.no_menu").first();
+        //store 이름 가져오기
+        Element title = document.select("div.restaurant_title_wrap").first();
+        String titleText = title.select("h1.restaurant_name").text();
+        //우장산점 같은 점포명 가져오기
+        String titleSub = title.select("p.branch").text();
+        //subtitle 이 있다면 합쳐서 스토어 명 만들어주기
+        if(titleSub != null) {
+            String titleAll = titleText + " " + "(" + titleSub + ")";
+            storeTableVO.setTitle(titleAll);
+        }else {
+            storeTableVO.setTitle(titleText);
+        }
 
 
+        log.error("storeTITLE : {} ",storeTableVO.getTitle());
+        //StoreURL 저장
+        storeTableVO.setUrl(storeURL);
+        log.error("storeURL : {} ", storeURL);
         //크롤링 해야하는 테이블에 어떤곳은 메뉴 항목이 있고 그 항목에 tr 이 없어서 if 넣어줌
         if (table == null) {
              table = document.select("table.info").first();
@@ -117,8 +138,11 @@ public class StoreService {
                 }
                 System.out.println(headerText + ": " + dataText);
             }
+        storeDAO.setUserStoreTableSave(storeTableVO);
         return storeTableVO;
     }
+
+
 
     //이미지 리스트 가져오기
     public List<StoreVO> getStoreDetailImage(String storeURL) throws Exception {
@@ -137,7 +161,7 @@ public class StoreService {
 
     public List<StoreCommentVO> getStoreComment(String storeURL) throws Exception {
         //drvier 설정 뒷쪽 내 크롬드라이버exe 위치
-        System.setProperty("webdriver.chrome.driver", "C:\\win\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
 
 
 //        //옵션 생성 (크롬 드라이버 버전 문제가 있는듯 data;
@@ -221,5 +245,9 @@ public class StoreService {
         } finally {
             driver.quit();
         }
+    }
+
+    public int setWishList(WishListVO wishListVO) throws Exception {
+        return storeDAO.setWishList(wishListVO);
     }
 }

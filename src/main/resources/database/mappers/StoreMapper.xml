@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.delivery.store.StoreDAO">
+    <insert id="setUserStoreSave" parameterType="StoreVO">
+        INSERT IGNORE INTO STORE (LASTUPDATE, TITLE, SUBDIVISION,IMAGE,GRADE,REVIEWCOUNT,`VIEW`,ID)
+        VALUES (#{lastUpdate},#{title},#{subdivision},#{image},#{grade},#{reviewCount},#{view},#{id})
+    </insert>
+    <insert id="setUserStoreTableSave" parameterType="StoreTableVO">
+<!--        IGNORE 제약조건을 위반하면 무시한다-->
+        INSERT IGNORE INTO STORETABLE (ADDRESS, PHONENUMBER, FOODTYPE, PRICERANGE, PARKING, TIME, LASTORDER, WEBSITE, MENU, RESTDAY,TITLE,URL)
+        VALUES (#{address},#{phoneNumber},#{foodType},#{priceRange}, #{parking},#{time},#{lastOrder} ,#{website},#{menu}, #{restDay},#{title},#{url})
+    </insert>
+    <insert id="setWishList" parameterType="WishListVO">
+        INSERT INTO WISHLIST (ID,TITLE)
+        VALUES (#{id},#{title});
+    </insert>
+
+
+</mapper>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/storeDetail.css">
     <link rel="stylesheet" href="/css/footer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <style>
@@ -88,7 +89,7 @@
                 <div class="buttons">
                     <button class="btn btn-outline-warning btn-long cart">Add to Cart</button>
                     <button class="btn btn-warning btn-long buy">Buy it Now</button>
-                    <button class="btn btn-light wishlist"><i class="fa fa-heart"></i></button>
+                    <button class="btn btn-light wishlist" data-title="${storeTable.title}" data-id="${id}"><i class="fa fa-heart"></i></button>
                 </div>
                 <hr>
                 <div class="product-description">
@@ -250,6 +251,34 @@
             }
         });
     });
+
+
+        $(document).ready(function() {
+        $('.wishlist').on('click', function() {
+            let title = $(this).data('title');
+            let id = $(this).data('id');
+            $.ajax({
+                url: 'setWishList',
+                type: 'POST',
+                data: {
+                    id : id,
+                    title: title
+                },
+                success: function(response) {
+                    console.log('찜등록 완료');
+                    console.log(title);
+                    // You can update the UI here to indicate the item was added to the wish list
+                },
+                error: function(xhr, status, error) {
+                    // The request encountered an error, handle it here
+                    console.error('찜 등록 실패 : ', error);
+                    console.log(title)
+                    console.log(id)
+                }
+            });
+        });
+    });
+
 </script>
 <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
 <script> $('#lightSlider').lightSlider({gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9});

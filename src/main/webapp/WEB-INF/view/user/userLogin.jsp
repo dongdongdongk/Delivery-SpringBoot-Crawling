@@ -71,9 +71,9 @@
             <p class="font-italic text-muted mb-0">엄선된 맛집에서 간편하게 배달 또는 방문포장 주문을 하실 수 있는 웹서비스입니다.</p>
         </div>
 
-        <!-- Registeration Form -->
+        <!-- Login Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form id="userJoin" action="userJoin" method="post">
+            <form id="userLogin" action="userLogin" method="post">
                 <div class="row">
 
 
@@ -86,7 +86,6 @@
                         </div>
                         <input id="id" type="text" name="id" placeholder="아이디" class="form-control bg-white border-left-0 border-md">
                     </div>
-                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.id}</div>
 
                     <div class="form-group col-lg-12 mx-auto d-flex align-items-center">
                         <div class="border-bottom w-100 ml-5"></div>
@@ -105,7 +104,6 @@
                         <input id="password" type="password" name="password" placeholder="비밃번호" class="form-control bg-white border-left-0 border-md">
 
                     </div>
-                    <div class="col-lg-12 text-alert mb-4 msg_box">${errorMsg.password}</div>
 
 
                     <div class="form-group col-lg-12 mx-auto mb-4 ">

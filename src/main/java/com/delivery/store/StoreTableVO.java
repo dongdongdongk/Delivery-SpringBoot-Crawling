@@ -16,4 +16,6 @@ public class StoreTableVO {
     private String website;
     private String menu;
     private String restDay;
+    private String title;
+    private String url;
 }

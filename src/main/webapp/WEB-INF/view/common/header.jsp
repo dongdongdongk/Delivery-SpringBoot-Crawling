@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,10 +82,14 @@
         </a>
         <span class="headtext">
             <a href="/">배달배달</a>
-
+            <sec:authorize access="isAnonymous()">
             <a href="/user/userLogin"><button type="button" class="btn btn-outline-light ">로그인</button></a>
             <a href="/user/userJoin"><button type="button" class="btn btn-outline-light ">회원가입</button></a>
-
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a href="temp"></a>
+                <a href="/user/userLogout"><button type="button" class="btn btn-outline-light ">로그아웃</button></a>
+            </sec:authorize>
         </span>
     </div>
 <%--        <div class="header-image-container">--%>

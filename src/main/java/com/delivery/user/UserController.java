@@ -2,6 +2,8 @@ package com.delivery.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -22,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("userJoin")
@@ -76,5 +80,18 @@ public class UserController {
         System.out.println(count);
         return count;
     }
+    @GetMapping("myPage")
+    public ModelAndView getMyPage(UserVO userVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/myPage");
+        return mv;
+    }
 
+    @ResponseBody
+    @PostMapping ("setWishList")
+    public ModelAndView setWishList(WishListVO wishListVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        int result = userService.setWishList(wishListVO);
+        return mv;
+    }
 }

@@ -5,7 +5,9 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.delivery.user.UserVO" alias="UserVO"></typeAlias>
-
+        <typeAlias type="com.delivery.store.StoreVO" alias="StoreVO"></typeAlias>
+        <typeAlias type="com.delivery.store.StoreTableVO" alias="StoreTableVO"></typeAlias>
+        <typeAlias type="com.delivery.user.WishListVO" alias="WishListVO"></typeAlias>
     </typeAliases>
 
 

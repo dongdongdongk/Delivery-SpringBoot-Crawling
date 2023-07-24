@@ -9,4 +9,13 @@
         VALUES(#{id},#{password},#{phoneNumber},#{email},'ROLE_MEMBER',#{nickName},#{userName},#{gender},CURRENT_DATE,#{birth})
     </insert>
 
+    <select id="getLogin" parameterType="UserVO" resultType="UserVO" >
+        SELECT *
+        FROM USER
+        WHERE id=#{id}
+    </select>
+    <insert id="setWishList" parameterType="WishListVO">
+        INSERT INTO WISHLIST (ID,TITLE)
+        VALUES (#{id},#{title});
+    </insert>
 </mapper>
