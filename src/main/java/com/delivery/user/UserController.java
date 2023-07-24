@@ -87,11 +87,11 @@ public class UserController {
         return mv;
     }
 
-    @ResponseBody
-    @PostMapping ("setWishList")
-    public ModelAndView setWishList(WishListVO wishListVO) throws Exception {
-        ModelAndView mv = new ModelAndView();
-        int result = userService.setWishList(wishListVO);
-        return mv;
-    }
+//    @ResponseBody
+//    @PostMapping ("setWishList")
+//    public ModelAndView setWishList(WishListVO wishListVO) throws Exception {
+//        ModelAndView mv = new ModelAndView();
+//        int result = userService.setWishList(wishListVO);
+//        return mv;
+//    }
 }

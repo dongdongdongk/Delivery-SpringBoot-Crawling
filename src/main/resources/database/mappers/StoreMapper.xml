@@ -13,7 +13,7 @@
         VALUES (#{address},#{phoneNumber},#{foodType},#{priceRange}, #{parking},#{time},#{lastOrder} ,#{website},#{menu}, #{restDay},#{title},#{url})
     </insert>
     <insert id="setWishList" parameterType="WishListVO">
-        INSERT INTO WISHLIST (ID,TITLE)
+        INSERT IGNORE INTO WISHLIST (ID,TITLE)
         VALUES (#{id},#{title});
     </insert>
 

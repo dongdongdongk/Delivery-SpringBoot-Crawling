@@ -14,8 +14,13 @@
         FROM USER
         WHERE id=#{id}
     </select>
-    <insert id="setWishList" parameterType="WishListVO">
-        INSERT INTO WISHLIST (ID,TITLE)
-        VALUES (#{id},#{title});
-    </insert>
+
+    <select id="getWishList" parameterType="WishListVO" resultType="WishListVO">
+        SELECT
+
+    </select>
+<!--    <insert id="setWishList" parameterType="WishListVO">-->
+<!--        INSERT INTO WISHLIST (ID,TITLE)-->
+<!--        VALUES (#{id},#{title});-->
+<!--    </insert>-->
 </mapper>

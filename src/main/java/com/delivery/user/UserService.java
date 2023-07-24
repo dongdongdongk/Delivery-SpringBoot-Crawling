@@ -27,9 +27,9 @@ public class UserService implements UserDetailsService {
         return userDAO.overlapCheck(value, valueType);
     }
 
-    public int setWishList(WishListVO wishListVO) throws Exception {
-        return userDAO.setWishList(wishListVO);
-    }
+//    public int setWishList(WishListVO wishListVO) throws Exception {
+//        return userDAO.setWishList(wishListVO);
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {

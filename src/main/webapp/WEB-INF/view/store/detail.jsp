@@ -274,6 +274,7 @@
                     console.error('찜 등록 실패 : ', error);
                     console.log(title)
                     console.log(id)
+                    alert("찜 목록 추가 완료!!")
                 }
             });
         });

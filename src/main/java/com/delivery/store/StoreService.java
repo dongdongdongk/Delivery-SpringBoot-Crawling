@@ -82,7 +82,7 @@ public class StoreService {
         //우장산점 같은 점포명 가져오기
         String titleSub = title.select("p.branch").text();
         //subtitle 이 있다면 합쳐서 스토어 명 만들어주기
-        if(titleSub != null) {
+        if(!titleSub.isEmpty()) {
             String titleAll = titleText + " " + "(" + titleSub + ")";
             storeTableVO.setTitle(titleAll);
         }else {
