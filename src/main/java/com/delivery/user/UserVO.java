@@ -38,8 +38,8 @@ public class UserVO implements UserDetails {
     @NotBlank
     private String userName;
     private Date joinDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private java.util.Date birth;
+
+    private Date birth;
     @NotBlank(message = "성별을 선택 해주세요")
     private String gender;
 

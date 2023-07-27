@@ -52,7 +52,7 @@
 
                         <c:forEach var="storeImages" items="${storeImages}" varStatus="status">
                            <c:choose>
-                               <c:when test="${status.end < 1}">
+                               <c:when test="${empty storeImages.image}">
                                     <li data-thumb="/img/noImg.gif">
                                         <img class="oriImg" src="img/noImg.gif" alt="이미지 없음"/>
                                     </li>

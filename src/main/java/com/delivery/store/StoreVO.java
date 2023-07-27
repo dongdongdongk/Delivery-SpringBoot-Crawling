@@ -1,9 +1,6 @@
 package com.delivery.store;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +9,8 @@ import java.util.List;
 @Setter
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoreVO {
     private String lastUpdate;
     private String title;
@@ -22,4 +21,5 @@ public class StoreVO {
     private String view;
     private String url;
     private String id;
+    private StoreTableVO storeTableVO;
 }

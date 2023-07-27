@@ -15,12 +15,36 @@
         WHERE id=#{id}
     </select>
 
-    <select id="getWishList" parameterType="WishListVO" resultType="WishListVO">
-        SELECT
-
+    <select id="getWishList" parameterType="WishListVO" resultMap="WishListResultMap">
+        SELECT s.TITLE, s.SUBDIVISION, s.IMAGE ,st.URL , st.ADDRESS
+        FROM WISHLIST W
+        JOIN STORE S ON w.TITLE = s.TITLE
+        JOIN STORETABLE ST ON w.TITLE = st.TITLE
+        WHERE w.ID = #{id}
     </select>
-<!--    <insert id="setWishList" parameterType="WishListVO">-->
-<!--        INSERT INTO WISHLIST (ID,TITLE)-->
-<!--        VALUES (#{id},#{title});-->
-<!--    </insert>-->
+<!--    유저 정보 가져오기 -->
+    <select id="getUserInfo" parameterType="String" resultType="UserVO">
+        SELECT *
+        FROM USER
+        WHERE id=#{id}
+    </select>
+
+    <resultMap id="WishListResultMap" type="WishListVO">
+        <id column="title" property="title"/>
+        <result column="id" property="id"/>
+        <association property="storeVOS" javaType="StoreVO">
+            <id column="title" property="title"/>
+            <result column="subdivision" property="subdivision"/>
+            <result column="image" property="image"/>
+        </association>
+        <association property="storeTableVOS" javaType="StoreTableVO">
+            <id column="title" property="title"/>
+            <result column="url" property="url"/>
+            <result column="address" property="address"/>
+        </association>
+    </resultMap>
+
+
+
+
 </mapper>

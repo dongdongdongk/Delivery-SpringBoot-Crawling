@@ -60,7 +60,7 @@
 <section style="background-color: #ffffff;">
     <c:forEach var="storeList" items="${storeList}" varStatus="status">
        <c:choose>
-           <c:when test="${empty storeList}">
+           <c:when test="${empty storeList.title}">
                <h1>음식점이 없습니다</h1>
            </c:when>
            <c:otherwise>

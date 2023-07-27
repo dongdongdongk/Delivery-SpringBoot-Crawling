@@ -89,6 +89,7 @@
             <sec:authorize access="isAuthenticated()">
                 <a href="temp"></a>
                 <a href="/user/userLogout"><button type="button" class="btn btn-outline-light ">로그아웃</button></a>
+                <a href="/user/myPage"><button type="button" class="btn btn-outline-light ">마이페이지</button></a>
             </sec:authorize>
         </span>
     </div>

@@ -2,7 +2,9 @@ package com.delivery.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -81,8 +83,15 @@ public class UserController {
         return count;
     }
     @GetMapping("myPage")
-    public ModelAndView getMyPage(UserVO userVO) throws Exception {
+    public ModelAndView getMyPage(WishListVO wishListVO, Authentication authentication) throws Exception {
         ModelAndView mv = new ModelAndView();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String userId = userDetails.getUsername();
+        wishListVO.setId(userId);
+        List<WishListVO> wishListVOS = userService.getWishList(wishListVO);
+        UserVO userInfo = userService.getUserInfo(userId);
+        mv.addObject("wishListVOS", wishListVOS);
+        mv.addObject("userInfo",userInfo);
         mv.setViewName("user/myPage");
         return mv;
     }
