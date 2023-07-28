@@ -80,6 +80,8 @@
   -  스프링 시큐리티를 사용하여 로그인 & 회원가입 구현 
   -  자바스크립트 & Spring Validation 을 사용하여 유효성검사 실시
 
+<br>
+
 #### 2-2. 회원페이지 & 찜기능 
 <img src="src/main/resources/static/img/md/찜하기.gif">
   
