@@ -36,10 +36,18 @@ public class StoreController {
         List<StoreVO>storeImages = storeService.getStoreDetailImage(storeURL);
         StoreTableVO storeTableVO = storeService.getStoreTable(storeURL);
         List<StoreCommentVO>storeComment = storeService.getStoreComment(storeURL);
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String userId = userDetails.getUsername();
-        log.error(userId);
-        mv.addObject("id",userId);
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            String userId = userDetails.getUsername();
+            log.error(userId);
+            mv.addObject("id", userId);
+        } else {
+            mv.addObject("id", "anonymousUser");
+        }
+//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//        String userId = userDetails.getUsername();
+//        log.error(userId);
         mv.addObject("storeCommentList",storeComment);
         mv.addObject("storeImages",storeImages);
         mv.addObject("storeDetail",storeDetail);

@@ -72,7 +72,7 @@
                             <div class="col-md-6 mt-1">
                                 <h5>${storeList.title}</h5>
                                 <div class="d-flex flex-row">
-                                    <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                                    <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span></span>
                                 </div>
                                 <div class="mt-1 mb-1 spec-1"><span></span><span class="dot"></span><span>리뷰수:${storeList.reviewCount}</span><br><span class="dot"></span><span>조회수:${storeList.view}<br></span></div>
                                 <p class="text-justify text-truncate para mb-0">${storeList.subdivision}<br><br></p>

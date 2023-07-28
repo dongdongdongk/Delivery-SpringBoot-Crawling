@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 mt-7">
                 <h6>About</h6>
-                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> 믿고먹는 우리동네 맛집배달! 셔틀딜리버리는 엄선된 맛집에서 간편하게 배달 또는 방문포장 주문을 하실 수 있는 앱 및 웹서비스입니다. 현재 서울, 평택, 대구, 부산 지역에서 서비스되며 계속해서 확장중입니다. (English) 영어나 한국어 중 선호하시는 언어로 주문해보세요. 무엇을 드실지 고민되시나요? 지금 바로 셔틀이 엄선한 내 주변 맛집을 둘러보세요!</p>
+                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> 믿고먹는 우리동네 맛집탐방 배달배달은 엄선된 맛집을 찾을 수 있는 웹서비스입니다. 현재 서울, 평택, 대구, 부산 지역에서 서비스되며 계속해서 확장중입니다.  무엇을 드실지 고민되시나요? 지금 바로  엄선한 내 주변 맛집을 둘러보세요!</p>
             </div>
 
             <div class="col-xs-6 col-md-3">
